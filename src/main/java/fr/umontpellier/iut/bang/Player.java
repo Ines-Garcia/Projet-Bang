@@ -1,8 +1,6 @@
 package fr.umontpellier.iut.bang;
 
-import fr.umontpellier.iut.bang.cards.BlueCard;
-import fr.umontpellier.iut.bang.cards.Card;
-import fr.umontpellier.iut.bang.cards.WeaponCard;
+import fr.umontpellier.iut.bang.cards.*;
 import fr.umontpellier.iut.bang.characters.BangCharacter;
 
 import java.util.*;
@@ -177,7 +175,18 @@ public class Player {
      *                 responsable (p.ex. Dynamite)
      */
     public void decrementHealth(int n, Player attacker) {
-        throw new RuntimeException("Méthode non implémentée !");
+    /*    if(this.getHealthPoints()-n>0){ //si vivant apres degats
+            this.healthPoints-=n;
+        }
+        if (this.getHealthPoints()-n<0){ //si mort apres degats
+            if (this.getHand().contains(Beer)){ //si joueur a des bieres en main
+                if (){  //test si apres biere joueur encore mort
+                    //retirer le joueur
+                }
+                //mettre a jour pv sur joueur cible
+            }
+        }
+    */
     }
 
     /**
