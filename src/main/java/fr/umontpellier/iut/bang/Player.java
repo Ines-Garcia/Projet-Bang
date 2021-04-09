@@ -116,7 +116,7 @@ public class Player {
      * à {@code range}.
      */
     public List<Player> getPlayersInRange(int range) {
-
+        throw new RuntimeException("Méthode non implémentée !");
     }
 
     /**
