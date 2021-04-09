@@ -4,7 +4,7 @@ import fr.umontpellier.iut.bang.cards.BlueCard;
 import fr.umontpellier.iut.bang.cards.Card;
 import fr.umontpellier.iut.bang.cards.WeaponCard;
 import fr.umontpellier.iut.bang.characters.BangCharacter;
-
+import fr.umontpellier.iut.bang.Game;
 import java.util.*;
 
 public class Player {
@@ -108,7 +108,8 @@ public class Player {
      * immédiatement après le joueur courant)
      */
     public List<Player> getOtherPlayers() {
-        throw new RuntimeException("Méthode non implémentée !");
+        List<Player> player = game.getPlayers();
+        return player;
     }
 
     /**
@@ -117,7 +118,7 @@ public class Player {
      * à {@code range}.
      */
     public List<Player> getPlayersInRange(int range) {
-        throw new RuntimeException("Méthode non implémentée !");
+
     }
 
     /**
