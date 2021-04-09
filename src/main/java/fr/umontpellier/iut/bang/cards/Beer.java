@@ -10,7 +10,7 @@ public class Beer extends OrangeCard {
 
     public void ajouterPDV(Player p1){
         if (!p1.isDead()){ //vérif si pdv > 0 (vivant)
-            p1.incrementHealth(1); //incrementHealth vérifie sur pv>max
+            p1.incrementHealth(1); //incrementHealth vérifie si pv>max
         }
     }
 }
