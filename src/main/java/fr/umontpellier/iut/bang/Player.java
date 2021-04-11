@@ -176,18 +176,29 @@ public class Player {
      *                 responsable (p.ex. Dynamite)
      */
     public void decrementHealth(int n, Player attacker) {
-    /*    if(this.getHealthPoints()-n>0){ //si vivant apres degats
+        if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;
         }
-        if (this.getHealthPoints()-n<0){ //si mort apres degats
+        /*if (this.getHealthPoints()-n<0){ //si mort apres degats
             if (this.getHand().contains(Beer)){ //si joueur a des bieres en main
+                //cacul de combien de biere peuvent sauver
+                int pvmanquant=this.healthPoints-n;
+                int nbBiere=0;
+                while (pvmanquant<=0){
+                    nbBiere++;
+                    pvmanquant++;
+                }
+                do {
+                    //utiliser une biere
+                }while (!isDead());
                 if (){  //test si apres biere joueur encore mort
                     //retirer le joueur
                 }
                 //mettre a jour pv sur joueur cible
             }
-        }
-    */
+            //retirer le joueur
+        }*/
+
     }
 
     /**
