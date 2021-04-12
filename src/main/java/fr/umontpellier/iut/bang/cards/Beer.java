@@ -8,10 +8,8 @@ public class Beer extends OrangeCard {
         super("Beer", value, suit);
     }
 
-    public void ajouterPDV(Player player){
+    public void playedBy(Player player){
         super.playedBy(player);
-        if (!player.isDead()){ //vérif si pdv > 0 (vivant)
-            player.incrementHealth(1); //incrementHealth vérifie si pv>max
-        }
+        player.incrementHealth(1); //incrementHealth vérifie si pv>max
     }
 }

@@ -199,8 +199,8 @@ public class Player {
             //retirer le joueur
         }*/
         if (this.getHealthPoints()-n<0){ //si mort apres degats
-            BlueCard Biere = getCardInPlay("Beer");
             while (isDead()){ //tant que le joueur est mort, rajouter une condition si bierre en main?
+                BlueCard Biere = getCardInPlay("Beer");
                 if (Biere != null){
                     incrementHealth(1);
                     removeFromHand(Biere);
@@ -208,7 +208,6 @@ public class Player {
                     healthPoints=0;
                     game.getPlayers().remove(this);
                 }
-
             }
         }
 
