@@ -169,7 +169,14 @@ public class Game {
      * @return entier représentant la distance qui sépare les deux joueurs
      */
     public int getPlayerDistance(Player player1, Player player2) {
-        throw new RuntimeException("Méthode non implémentée !");
+        int posPlayer1, posPlayer2, distance;
+        posPlayer1 = players.indexOf(player1); //recup l'index du joueur 1
+        posPlayer2 = players.indexOf(player2); //recup l'index du joueur 2
+        distance = Math.abs(posPlayer1 - posPlayer2); //valeur absolue de la distance entre les 2 joueurs
+        if (distance == players.size() - 1){ // si P1 au début et P2 à la fin alors distance = 1
+            distance = 1;
+        }
+        return distance;
     }
 
     /**

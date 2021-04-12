@@ -116,7 +116,13 @@ public class Player {
      * à {@code range}.
      */
     public List<Player> getPlayersInRange(int range) {
-        throw new RuntimeException("Méthode non implémentée !");
+        ArrayList<Player> PlayersInRange = new ArrayList<>(); //ArrayList de retour
+        for (int nb = 0; nb < game.getPlayers().size() ; nb++) { //Parcours de la list de joueurs
+            if (range >= game.getPlayerDistance(this, game.getPlayers().get(nb))){ //si la range est >= à la distance entre le joueur courant et le joueur a l'indice nb.
+                PlayersInRange.add(game.getPlayers().get(nb)); //le joueur est donc a porté je l'ajoute donc.
+            }
+        }
+        return PlayersInRange;
     }
 
     /**
@@ -265,7 +271,11 @@ public class Player {
      * @return true si la carte a bien été retirée, false sinon (la carte n'était pas dans la main du joueur)
      */
     public boolean removeFromHand(Card card) {
-        throw new RuntimeException("Méthode non implémentée !");
+        if (hand.contains(card)){ //si la main contient, je retire et retourne vrai
+            hand.remove(card);
+            return true;
+        }
+        return false;
     }
 
     /**

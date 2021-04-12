@@ -11,14 +11,14 @@ public class Bang extends OrangeCard {
         super("Bang!", value, suit);
     }
 
-    //liste joueurs
-    public List<Player> reachablePlayer(List<Player> allPlayerList) {
-        allPlayerList = getOtherPlayers();
-
-    }
-
     @Override
-    public void playedBy(Player p) {
+    public void playedBy(Player player) {
+        super.playedBy(player);
+        List<Player> PlayerAPorte = player.getPlayersInRange(1); //recup les joueurs a porte
+        Player playerCible = player.choosePlayer("Séléctionne ta cible", PlayerAPorte, false); //choisis la cible
+        playerCible.decrementHealth(1,player); //met a jours les pv
+        player.discardFromHand(this); //retire la carte de la main du joueur
+
         //je choisis le joueur
         //si le joueur n'est pas deja mort
         //si j'ai pas deja tirer un Bang ET que j'ai pas l'arme Volcanic

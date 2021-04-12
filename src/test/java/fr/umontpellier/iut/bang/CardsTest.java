@@ -48,7 +48,7 @@ public class CardsTest {
         p5 = simpleGame.getPlayers().get(4);
     }
 
-    @Disabled
+
     @Test
     void testBang() {
         simpleGame.setInput("p2");
@@ -59,7 +59,7 @@ public class CardsTest {
         assertEquals(3, p2.getHealthPoints());
     }
 
-    @Disabled
+
     @Test
     void testBangHorsPortee() {
         simpleGame.setInput("p3", "p2");
@@ -105,7 +105,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(beer));
     }
 
-    @Disabled
+
     @Test
     void testBeer() {
         Card beer = new Beer(1, CardSuit.HEART);
