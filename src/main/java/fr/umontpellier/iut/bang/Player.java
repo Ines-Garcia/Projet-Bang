@@ -143,11 +143,12 @@ public class Player {
      * @param weapon nouvelle arme à équiper
      */
     public void setWeapon(WeaponCard weapon) {
-        Player p = new Player(this.name, this.bangCharacter, this.role);
-        if (p.getHand().contains(weapon) && weapon!=this.weapon){ //probablement à revoir : si la liste des cartes en main contient bien le "weapon" qu'il veux utiliser ET que son arme actuelle est différente de celle qu'il veut utiliser
-            p.discard(this.weapon); //l'arme courante en main est jeté dans la fausse
-            p.setWeapon(null); //l'arme qu'il a en main est : null (voir /*remarque*/ du dessus)
-            p.setWeapon(weapon); //set la nouvelle arme en tant que courante
+        if (this.getWeapon()!=null){
+            this.discard(this.weapon); //l'arme courante en main est jeté dans la fausse
+            this.setWeapon(null); //l'arme qu'il a en main est : null (voir /*remarque*/ du dessus)
+            this.setWeapon(weapon); //set la nouvelle arme en tant que courante
+        }else { //si j'ai pas d'arme
+            this.setWeapon(weapon);
         }
     }
 
@@ -192,25 +193,6 @@ public class Player {
         if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;
         }
-        /*if (this.getHealthPoints()-n<0){ //si mort apres degats
-            if (this.getHand().contains(Beer)){ //si joueur a des bieres en main
-                //cacul de combien de biere peuvent sauver
-                int pvmanquant=this.healthPoints-n;
-                int nbBiere=0;
-                while (pvmanquant<=0){
-                    nbBiere++;
-                    pvmanquant++;
-                }
-                do {
-                    //utiliser une biere
-                }while (!isDead());
-                if (){  //test si apres biere joueur encore mort
-                    //retirer le joueur
-                }
-                //mettre a jour pv sur joueur cible
-            }
-            //retirer le joueur
-        }*/
         if (this.getHealthPoints()-n<0){ //si mort apres degats
             while (isDead()){ //tant que le joueur est mort, rajouter une condition si bierre en main?
                 BlueCard Biere = getCardInPlay("Beer");
