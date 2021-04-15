@@ -143,12 +143,12 @@ public class Player {
      * @param weapon nouvelle arme à équiper
      */
     public void setWeapon(WeaponCard weapon) {
-        if (this.getWeapon()!=null){
+        if (this.getWeapon()!=null){ // si j'ai une arme
             this.discard(this.weapon); //l'arme courante en main est jeté dans la fausse
-            this.setWeapon(null); //l'arme qu'il a en main est : null (voir /*remarque*/ du dessus)
-            this.setWeapon(weapon); //set la nouvelle arme en tant que courante
+            //this.weapon=null; //si besoin d'enlever une arme alors p.setWeapon(null)
+            this.weapon=weapon; //set la nouvelle arme en tant que courante
         }else { //si j'ai pas d'arme
-            this.setWeapon(weapon);
+            this.weapon=weapon;
         }
     }
 
