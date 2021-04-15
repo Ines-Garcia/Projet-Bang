@@ -1,6 +1,8 @@
 package fr.umontpellier.iut.bang;
 
+import fr.umontpellier.iut.bang.cards.BlueCard;
 import fr.umontpellier.iut.bang.cards.*;
+import fr.umontpellier.iut.bang.cards.WeaponCard;
 import fr.umontpellier.iut.bang.characters.BangCharacter;
 import fr.umontpellier.iut.bang.Game;
 import java.util.*;
@@ -141,7 +143,12 @@ public class Player {
      * @param weapon nouvelle arme à équiper
      */
     public void setWeapon(WeaponCard weapon) {
-        throw new RuntimeException("Méthode non implémentée !");
+        Player p = new Player(this.name, this.bangCharacter, this.role);
+        if (p.getHand().contains(weapon) && weapon!=this.weapon){ //probablement à revoir : si la liste des cartes en main contient bien le "weapon" qu'il veux utiliser ET que son arme actuelle est différente de celle qu'il veut utiliser
+            p.discard(this.weapon); //l'arme courante en main est jeté dans la fausse
+            p.setWeapon(null); //l'arme qu'il a en main est : null (voir /*remarque*/ du dessus)
+            p.setWeapon(weapon); //set la nouvelle arme en tant que courante
+        }
     }
 
     /**
