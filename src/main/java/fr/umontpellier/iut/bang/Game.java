@@ -298,10 +298,10 @@ public class Game {
 
         } else if (players.contains(sheriffPlayer) && !players.containsAll(outlawPlayers) && !players.contains(renegadePlayer)) { // victoire du sheriff et des adjoints
             finished = true;
-            for (Player p : players) {
+            winners.addAll(players);
+            /*for (Player p : players) {
                 winners.add(p);
-            }
-
+            }*/
         } else { // la partie n'est toujours pas terminée
             finished = false;
         }
