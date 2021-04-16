@@ -531,7 +531,7 @@ public class Player {
      * @param card carte à retirer de la liste
      */
     public void removeFromInPlay(BlueCard card) {
-        throw new RuntimeException("Méthode non implémentée !");
+        inPlay.remove(card);
     }
 
     /**
