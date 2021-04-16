@@ -283,21 +283,28 @@ public class Game {
     /**
      * Teste si la partie est terminée et met à jour les attributs {@code finished} et {@code winners}.
      */
-    private void updateGameFinished(){
-        while (!finished) {
-            if (sheriffPlayer.isDead()) { //si le Shérif est mort
-                for (Player i : outlawPlayers) {
-                    if (i.isDead() && !renegadePlayer.isDead()) { // si les hors-la-loi tous éliminés et rénégat en jeu
-                        winners.add(renegadePlayer);
-                        finished = true;
-                    }
-                }
-                winners.addAll(outlawPlayers);
-                finished = true;
-            }
-            winners.add(sheriffPlayer);
+    private void updateGameFinished() {
+        if (players.size() == 1 && players.contains(renegadePlayer)) { // victoire du renégat
             finished = true;
-        } //tes
+            winners.add(renegadePlayer);
+
+        } else if (players.size() != 1 && !players.contains(sheriffPlayer)) { // victoire des hors-la-loi
+            finished = true;
+            for (Player p : players) {
+                if (outlawPlayers.contains(p)) {
+                    winners.add(p);
+                }
+            }
+
+        } else if (players.contains(sheriffPlayer) && !players.containsAll(outlawPlayers) && !players.contains(renegadePlayer)) { // victoire du sheriff et des adjoints
+            finished = true;
+            for (Player p : players) {
+                winners.add(p);
+            }
+
+        } else { // la partie n'est toujours pas terminée
+            finished = false;
+        }
     }
     /**
      * Affiche une chaîne de caractères sur la sortie standard
