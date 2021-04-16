@@ -213,34 +213,7 @@ public class Player {
      * @return distance à laquelle le joueur courant voit le joueur passé en paramètre
      */
     public int distanceTo(Player player) {
-        throw new RuntimeException("Méthode non implémentée !");
-        //annotation de Willy : je pense qu'il faut utiliser un TreeSet pour avoir une liste des joueurs dans l'ordre
-        //comme ça le joueur courant est a une position x et le joueur passé en paramètre est a une position y
-        //on aura juste a parcourir la liste a partir de la GAUCHE et de la DROITE et on prendra la plus PETITE valeur des deux.
-        // exemple :
-        // il y a 5 joueur : {Didier, Ines, Romain, Willy, Axelle}
-        // leur position sera donc : {0, 1, 2, 3, 4}
-
-        // si je veux connaitre la distance entre Ines et Axelle je ferais :
-        // j'initialise mon compteur a 1 (vous allez voir pourquoi à 1 et pas à 0) :
-
-        // je commence par la gauche :
-        // - de la position 1 a 0 :
-        //je vérifie si le player passé en paramètre == player a l'indice 0 : j'incrémente mon compteur de 1 si c'est pas le cas : compteur=2
-        // - de la position 0 a 4 :
-        //je vérifie si le player passé en paramètre == player a l'indice 4 : j'incrémente pas mon compteur car c'est le cas : donc compteur reste à 2
-        // - et c'est bon je suis arrivé jusqu'a l'indice d'Axelle avec une distance de 2.
-
-        // ensuite par la droite :
-        // - de la position 1 a 2 :
-        //je vérifie si le player passé en paramètre == player a l'indice 2 : j'incrémente mon compteur de 1 si c'est pas le cas : compteur=2
-        // - de la position 2 a 3 :
-        //je vérifie si le player passé en paramètre == player a l'indice 3 : j'incrémente mon compteur de 1 si c'est pas le cas : compteur=3
-        // - de la position 3 a 4 : j'incrémente mon compteur de 1 : compteur=3
-        //je vérifie si le player passé en paramètre == player a l'indice 4 : j'incrémente pas mon compteur car c'est le cas : donc compteur reste à 3
-        // - et c'est bon je suis arrivé jusqu'a l'indice d'Axelle avec une distance de 3.
-
-        // je compare les deux et je vois que le compteur le plus petit est celui de GAUCHE : la distance entre ines et axelle est donc de 2.
+        return game.getPlayerDistance(this,player);
     }
 
     /**
