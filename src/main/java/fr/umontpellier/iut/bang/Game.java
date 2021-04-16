@@ -284,18 +284,21 @@ public class Game {
      * Teste si la partie est terminée et met à jour les attributs {@code finished} et {@code winners}.
      */
     private void updateGameFinished(){
-        if (sheriffPlayer.isDead()){ //si le Shérif est mort
-            if (!renegadePlayer.isDead() && outlawPlayers.get(0).isDead() && outlawPlayers.get(1).isDead()){ // si les hors-la-loi tous éliminés et rénégat en jeu
-                winners.add(renegadePlayer);
-            }else{
+        while (!finished) {
+            if (sheriffPlayer.isDead()) { //si le Shérif est mort
+                for (Player i : outlawPlayers) {
+                    if (i.isDead() && !renegadePlayer.isDead()) { // si les hors-la-loi tous éliminés et rénégat en jeu
+                        winners.add(renegadePlayer);
+                        finished = true;
+                    }
+                }
                 winners.addAll(outlawPlayers);
+                finished = true;
             }
-        }
-        if (outlawPlayers.get(0).isDead() || outlawPlayers.get(1).isDead() || renegadePlayer.isDead()){ // si hors-la-loi et rénégat tous éliminés
             winners.add(sheriffPlayer);
+            finished = true;
         }
     }
-
     /**
      * Affiche une chaîne de caractères sur la sortie standard
      *
