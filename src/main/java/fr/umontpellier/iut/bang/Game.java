@@ -283,8 +283,17 @@ public class Game {
     /**
      * Teste si la partie est terminée et met à jour les attributs {@code finished} et {@code winners}.
      */
-    private void updateGameFinished() {
-        throw new RuntimeException("Méthode non implémentée !");
+    private void updateGameFinished(){
+        if (sheriffPlayer.isDead()){ //si le Shérif est mort
+            if (!renegadePlayer.isDead() && outlawPlayers.get(0).isDead() && outlawPlayers.get(1).isDead()){ // si les hors-la-loi tous éliminés et rénégat en jeu
+                winners.add(renegadePlayer);
+            }else{
+                winners.addAll(outlawPlayers);
+            }
+        }
+        if (outlawPlayers.get(0).isDead() || outlawPlayers.get(1).isDead() || renegadePlayer.isDead()){ // si hors-la-loi et rénégat tous éliminés
+            winners.add(sheriffPlayer);
+        }
     }
 
     /**
