@@ -322,7 +322,7 @@ public class Player {
      * <p>
      * {@code
      * List<String> choices = Arrays.asList("oui", "non");
-     * String input = p.choose("Voulez vous faire ceci ?", choices, true, false);
+     * String input = p.("Voulez vous faire ceci ?", choices, true, false);
      * }
      *
      * @param instruction message à afficher à l'écran pour indiquer au joueur

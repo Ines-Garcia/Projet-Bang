@@ -15,7 +15,7 @@ public class Gatling extends OrangeCard {
         super.playedBy(player);
         List<Player> joueurs = player.getOtherPlayers();
         for (Player p : joueurs){
-            while (p!=player){
+            while (p!=player){ // sert a quoi ?
                 p.decrementHealth(1,player);
             }
         }
