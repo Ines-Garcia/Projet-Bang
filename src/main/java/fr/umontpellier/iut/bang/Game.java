@@ -297,7 +297,7 @@ public class Game {
             }
             winners.add(sheriffPlayer);
             finished = true;
-        }
+        } //test
     }
     /**
      * Affiche une chaîne de caractères sur la sortie standard
