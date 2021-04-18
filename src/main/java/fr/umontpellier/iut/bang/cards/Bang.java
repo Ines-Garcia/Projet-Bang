@@ -28,7 +28,7 @@ public class Bang extends OrangeCard {
         //donc renvoi boolean
     }
 
-    /*public boolean canPlayFromHand(Player player) {
+    public boolean canPlayFromHand(Player player) {
         if (player.getGame().getCurrentPlayer()==player){ //si c'est le tour du joueur passé en parametre
            if (player.getHand().contains(this)){ //si le joueur en parametre a la carte en main //pas besoin car playFromHand test deja si carte presente dans la main
                return true;
@@ -36,6 +36,6 @@ public class Bang extends OrangeCard {
            return false;
         }
         return false;
-    }*/
+    }
 
 }

@@ -27,5 +27,17 @@ public class CatBalou extends OrangeCard {
             //player.choose("Choisis une carte dans la main du joueur cible :", cartePlayerCibleHand, );
 
 
+
+
+    }
+
+    public boolean canPlayFromHand(Player player) {
+        if (player.getGame().getCurrentPlayer()==player){ //si c'est le tour du joueur passé en parametre
+            if (player.getHand().contains(this)){ //si le joueur en parametre a la carte en main //pas besoin car playFromHand test deja si carte presente dans la main
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }
