@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.bang.cards;
 
+import fr.umontpellier.iut.bang.Game;
 import fr.umontpellier.iut.bang.Player;
 
 import java.util.ArrayList;
@@ -26,5 +27,15 @@ public class Bang extends OrangeCard {
         //si le joueur en face n'as pas une carte Missed (et la planque?)
         //donc renvoi boolean
     }
+
+    /*public boolean canPlayFromHand(Player player) {
+        if (player.getGame().getCurrentPlayer()==player){ //si c'est le tour du joueur passé en parametre
+           if (player.getHand().contains(this)){ //si le joueur en parametre a la carte en main
+               return true;
+           }
+           return false;
+        }
+        return false;
+    }*/
 
 }
