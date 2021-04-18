@@ -12,7 +12,6 @@ public class Missed extends OrangeCard {
 
     public void playedBy(Player player) {
         super.playedBy(player);
-        player.discardFromHand(this); //retire la carte de la main du joueur
     }
 
 }

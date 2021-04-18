@@ -71,7 +71,7 @@ public class CardsTest {
         assertEquals(4, p3.getHealthPoints());
     }
 
-    @Disabled
+
     @Test
     void testBarrelAvecCoeur() {
         simpleGame.setInput("p2");
@@ -88,7 +88,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(beer));
     }
 
-    @Disabled
+
     @Test
     void testBarrelPasDeCoeur() {
         simpleGame.setInput("p2");

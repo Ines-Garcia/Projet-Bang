@@ -207,7 +207,7 @@ public class Player {
                 BlueCard Biere = getCardInPlay("Beer");
                 if (Biere != null){
                     incrementHealth(1);
-                    removeFromHand(Biere);
+                    discardFromHand(Biere);  //removeFromHand?
                 }else {
                     healthPoints=0;
                     game.getPlayers().remove(this);
