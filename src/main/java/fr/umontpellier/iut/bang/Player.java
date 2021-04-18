@@ -511,7 +511,7 @@ public class Player {
      * @param card la carte à jouer
      */
     public void playFromHand(Card card) {
-        if (hand.remove(card)) {
+        if (hand.remove(card)) { //si carte presente dans la main alors l'enleve
             card.playedBy(this);
         }
     }
@@ -553,7 +553,7 @@ public class Player {
         while (true) {
             List<Card> possibleCards = new ArrayList<>();
             for (Card c : hand) {
-                if (c.canPlayFromHand(this)) {
+                if (c.canPlayFromHand(this)) { //appel du canPlayFromHand de chaque carte pour savoir si elle peut etre joué
                     possibleCards.add(c);
                 }
             }

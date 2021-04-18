@@ -19,6 +19,14 @@ public class Barrel extends BlueCard {
             player.playFromHand(missed); //joue la carte (ne la met pas sur le plateau)
             player.removeFromHand(missed); //remove et pas discard car sinon met la carte dans la defausse
             //quel condition pour enlever une carte bleu de devant le joueur
+            /*
+            while(carte sur le plateau){
+                if(je prend prend des degats){
+                    appel carte missed
+                    enleve barrel du plateau
+                }
+            }
+             */
         }
         // carte degainer n'est pas un coeur donc rien ne se passe
     }
