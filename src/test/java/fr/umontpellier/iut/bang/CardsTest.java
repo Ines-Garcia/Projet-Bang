@@ -498,4 +498,19 @@ public class CardsTest {
         p1.playFromHand(winchester);
         assertEquals(5, p1.getWeaponRange());
     }
+
+    /*
+    @Test
+    void liste_card_discardFromHand() {
+        Card winchester = new Winchester(1, CardSuit.HEART);
+        Card beer = new Beer(1, CardSuit.HEART);
+        Card bang = new Bang(6, CardSuit.DIAMOND);
+        p1.getHand().add(winchester);
+        p1.getHand().add(beer);
+        p1.getHand().add(bang);
+        p1.discardFromHand(beer);
+        assertEquals(winchester, p1.getHand());
+    }
+    */
+
 }
