@@ -166,6 +166,15 @@ public class Player {
         return null;
     }
 
+    public Card getCardInHand(String cardName) {
+        for (Card c : hand) {
+            if (c.getName().equals(cardName)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     /**
      * Augmente le nombre de points de vie du joueur de la valeur indiquée, sans toutefois dépasser la valeur maximale
      *
