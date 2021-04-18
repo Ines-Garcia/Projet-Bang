@@ -31,10 +31,11 @@ public class Barrel extends BlueCard {
         // carte degainer n'est pas un coeur donc rien ne se passe
     }*/
 
-    /*public void playedBy(Player player){
+    public void playedBy(Player player){
         super.playedBy(player);
         player.addToInPlay(this); //met sur le plateau
-        Card degainer = player.randomDraw(); //dégaine une carte
+
+        /*Card degainer = player.randomDraw(); //dégaine une carte
         while (player.getInPlay().contains(this)){
             if (degainer.getSuit()==CardSuit.HEART){ //si la carte degainer est un coeur
                 Card missed = new Missed(1,CardSuit.HEART); //creation carte missed
@@ -44,8 +45,8 @@ public class Barrel extends BlueCard {
             }
         }
         player.removeFromInPlay(this);
-        // carte degainer n'est pas un coeur donc rien ne se passe
-    }*/
+        // carte degainer n'est pas un coeur donc rien ne se passe */
+    }
 
     public boolean canPlayFromHand(Player player) {
         if (player.getGame().getCurrentPlayer()==player){ //si c'est le tour du joueur passé en parametre
