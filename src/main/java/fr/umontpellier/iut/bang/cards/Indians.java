@@ -21,10 +21,11 @@ public class Indians extends OrangeCard {
 
         for (Player p : joueurs){
             if (p.getHand().contains("Bang")) {
-                if (p.choose("Voulez vous jouer un Bang", choice, true, false) == "") {
+                if (p.choose("Voulez vous défausser un Bang", choice, false, false) == "non") { //demande si le joueur veux perdre un point de vie
+
                     p.decrementHealth(1, player);
                 } else {
-                    //retirer la carte bang de la main du joueur
+                    p.discardFromHand(p.getCardInHand("Bang")); //enleve le bang de la main du joueur
                 }
             }
         }
