@@ -41,6 +41,11 @@ public class Player {
      */
     private WeaponCard weapon;
 
+    /**
+     * bonus portee
+     */
+    private int bonusPorte=0;
+
     public Player(String name, BangCharacter bangCharacter, Role role) {
         this.name = name;
         this.role = role;
@@ -127,7 +132,7 @@ public class Player {
     public List<Player> getPlayersInRange(int range) {
         ArrayList<Player> PlayersInRange = new ArrayList<>(); //ArrayList de retour
         for (int nb = 0; nb < game.getPlayers().size() ; nb++) { //Parcours de la list de joueurs
-            if (range >= game.getPlayerDistance(this, game.getPlayers().get(nb))){ //si la range est >= à la distance entre le joueur courant et le joueur a l'indice nb.
+            if (range+bonusPorte >= game.getPlayerDistance(this, game.getPlayers().get(nb))){ //si la range + bonus est >= à la distance entre le joueur courant et le joueur a l'indice nb.
                 PlayersInRange.add(game.getPlayers().get(nb)); //le joueur est donc a porté je l'ajoute donc.
             }
         }
@@ -586,4 +591,13 @@ public class Player {
             }
         }
     }
+
+    public int getBonusPorte() {
+        return bonusPorte;
+    }
+
+    public void setBonusPorte(int bonusPorte) {
+        this.bonusPorte = bonusPorte;
+    }
+
 }
