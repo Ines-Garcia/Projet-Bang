@@ -82,6 +82,13 @@ public class Player {
         return weapon;
     }
 
+    public List<Card> getAllCards(){ //RETOURNE UNE LIST DE TOUTES LES CARTES DU JOUEUR
+        List<Card> playerAllCards = new ArrayList<>(); //crée une liste de toutes les cartes
+        playerAllCards.addAll(this.getInPlay()); //ajoute les cartes en jeu
+        playerAllCards.addAll(this.getHand()); //ajoute les cartes en main
+        return playerAllCards; //retourne la liste
+    }
+
     /**
      * @return la portée de l'arme équipée (1 si aucune arme équipée)
      */

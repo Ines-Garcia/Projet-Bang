@@ -45,5 +45,4 @@ class GameTest {
         assertEquals(1, minimalGame.getPlayerDistance(p1, p4));
         assertEquals(2, minimalGame.getPlayerDistance(p2, p4));
     }
-
 }

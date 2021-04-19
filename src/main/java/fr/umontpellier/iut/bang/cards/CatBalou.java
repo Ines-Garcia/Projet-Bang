@@ -14,21 +14,10 @@ public class CatBalou extends OrangeCard {
             super.playedBy(player);
             List<Player> PlayerRestant = player.getOtherPlayers();
             Player playerCible = player.choosePlayer("Séléctionne ta cible", PlayerRestant, false); //choisis la cible
-            //Card cardChoisis = player.chooseCard("Choisis une carte en jeu du joueur cible", playerCible.getInPlay(), true, true);
-            //Erreur sur la ligne du dessus car je veux la liste des BLUECARDS mais il accepte que les CARDS ce gros béta
-
-            //playerCible.discardFromHand(cardChoisis); //retire la carte de la main du joueur
-
+            Card cardChoisis = player.chooseCard("Choisis une carte du joueur cible", playerCible.getAllCards(), true, true); //recup les cartes en main du joueur cible
+            playerCible.discardFromHand(cardChoisis); //retire la carte de la main du joueur
             //if(cardChoisis==null){
-
             //}
-
-        //player.
-            //player.choose("Choisis une carte dans la main du joueur cible :", cartePlayerCibleHand, );
-
-
-
-
     }
 
     public boolean canPlayFromHand(Player player) {
