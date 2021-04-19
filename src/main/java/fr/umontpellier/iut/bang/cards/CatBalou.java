@@ -20,7 +20,7 @@ public class CatBalou extends OrangeCard {
             playerCible.removeFromInPlay(playerCible.getCardInPlay(cardChoisis.getName())); //defausse la carte du plateau du joueur
         }
         player.discardFromHand(this); //defausse la carte du joueur courant
-        }
+    }
 
     public boolean canPlayFromHand(Player player) {
         if (player.getGame().getCurrentPlayer()==player){ //si c'est le tour du joueur passé en parametre
