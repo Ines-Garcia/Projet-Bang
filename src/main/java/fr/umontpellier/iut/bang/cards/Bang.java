@@ -15,6 +15,9 @@ public class Bang extends OrangeCard {
     @Override
     public void playedBy(Player player) {
         super.playedBy(player);
+        if (player.getInPlay().contains(player.getCardInPlay("Scope"))){ //si le joueur a un scope
+            List<Player> PlayerAPorte = player.getPlayersInRange(player.getWeaponRange()+1); //recup les joueurs a porte +1
+        }
         List<Player> PlayerAPorte = player.getPlayersInRange(player.getWeaponRange()); //recup les joueurs a porte
         Player playerCible = player.choosePlayer("Séléctionne ta cible", PlayerAPorte, false); //choisis la cible
         if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))){ //si la cible a un missed en main
@@ -36,8 +39,15 @@ public class Bang extends OrangeCard {
             playerCible.decrementHealth(1,player); //met a jours les pv
         }
         player.discardFromHand(this); //retire la carte de la main du joueur
-
     }
+
+    /* List<Player> joueurs = player.getOtherPlayers(); //idee mustang
+        for (Player p : joueurs){
+            if (p.getInPlay().contains(p.getCardInPlay("Mustang"))){
+
+            }
+        } */
+
         //je choisis le joueur
         //si le joueur n'est pas deja mort
         //si j'ai pas deja tirer un Bang ET que j'ai pas l'arme Volcanic
