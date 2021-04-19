@@ -15,16 +15,16 @@ public class Bang extends OrangeCard {
     @Override
     public void playedBy(Player player) {
         super.playedBy(player);
-        if (player.getInPlay().contains(player.getCardInPlay("Scope"))){ //si le joueur a un scope
+        /*if (player.getInPlay().contains(player.getCardInPlay("Scope"))){ //si le joueur a un scope
             List<Player> PlayerAPorte = player.getPlayersInRange(player.getWeaponRange()+1); //recup les joueurs a porte +1
-        }
+        }*/
         List<Player> PlayerAPorte = player.getPlayersInRange(player.getWeaponRange()); //recup les joueurs a porte
         Player playerCible = player.choosePlayer("Séléctionne ta cible", PlayerAPorte, false); //choisis la cible
         if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))){ //si la cible a un missed en main
             List<String> choice = new ArrayList<>();
-            choice.add("Oui");
-            choice.add("Non");
-            if (playerCible.choose("Voulez vous jouer un Missed", choice, true, false).equals("Non")) { //demande au joueur cible si il veut jouer sa carte miss
+            choice.add("Missed!");
+            choice.add("");
+            if (playerCible.choose("Voulez vous jouer un Missed", choice, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
                 playerCible.decrementHealth(1, player); // si il ne veut pas utiliser un missed
             }else { //si il utilise un missed
                 playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
