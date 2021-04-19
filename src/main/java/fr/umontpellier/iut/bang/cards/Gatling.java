@@ -19,7 +19,6 @@ public class Gatling extends OrangeCard {
                 p.decrementHealth(1,player);
             }
         }
-        player.discardFromHand(this);
     }
 
     public boolean canPlayFromHand(Player player) {

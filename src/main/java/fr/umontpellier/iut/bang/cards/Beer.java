@@ -11,7 +11,6 @@ public class Beer extends OrangeCard {
     public void playedBy(Player player){
         super.playedBy(player);
         player.incrementHealth(1); //incrementHealth vérifie si pv>max
-        player.discardFromHand(this);
     }
 
     public boolean canPlayFromHand(Player player) {

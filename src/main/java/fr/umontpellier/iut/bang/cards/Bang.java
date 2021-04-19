@@ -38,7 +38,6 @@ public class Bang extends OrangeCard {
         }else { //si la cible n'as ni de barrel ni de missed
             playerCible.decrementHealth(1,player); //met a jours les pv
         }
-        player.discardFromHand(this); //retire la carte de la main du joueur
     }
 
     /* List<Player> joueurs = player.getOtherPlayers(); //idee mustang
