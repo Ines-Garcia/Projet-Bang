@@ -303,7 +303,6 @@ public class CardsTest {
         Card jail = new Jail(1, CardSuit.HEART);
         Card pique = new Beer(3, CardSuit.SPADE);
         Card saloon = new Saloon(1, CardSuit.HEART);
-
         p2.getHand().add(jail);
         p3.getHand().add(saloon);
         drawPile.push(pique);
