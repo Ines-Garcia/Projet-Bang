@@ -17,6 +17,5 @@ public class Saloon extends OrangeCard {
         for (Player i : joueurs){
             i.incrementHealth(1);
         }
-        player.discardFromHand(this);
     }
 }

@@ -16,16 +16,16 @@ public class Indians extends OrangeCard {
         super.playedBy(player);
         List<Player> joueurs = player.getOtherPlayers();
         List<String> choice = new ArrayList<>();
-        choice.add("Oui");
-        choice.add("Non");
+        choice.add("Bang!");
+        choice.add("");
 
         for (Player p : joueurs){
             if (p!=player) {
-                if (p.getHand().contains("Bang")) {
-                    if (p.choose("Voulez vous défausser un Bang", choice, false, false) == "non") { //demande si le joueur veux perdre un point de vie
+                if (p.getHand().contains(p.getCardInHand("Bang!"))) {
+                    if (p.choose("Voulez vous défausser un Bang ? ", choice, false, true).equals("")) { //demande si le joueur veux perdre un point de vie
                         p.decrementHealth(1, player);
                     } else {
-                        p.discardFromHand(p.getCardInHand("Bang")); //enleve le bang de la main du joueur
+                        p.discardFromHand(p.getCardInHand("Bang!")); //enleve le bang de la main du joueur
                     }
                 }
                 else {
