@@ -10,8 +10,6 @@ public class Scope extends BlueCard {
 
     public void playedBy(Player player){
         super.playedBy(player);
-        player.addToInPlay(this);//ajoute la carte sur le terrain
-        player.setBonusPorte(2); //pourquoi 2 ?
     }
 
 }
