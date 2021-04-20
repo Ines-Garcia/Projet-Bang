@@ -132,7 +132,7 @@ public class Player {
     public List<Player> getPlayersInRange(int range) {
         ArrayList<Player> PlayersInRange = new ArrayList<>(); //ArrayList de retour
         for (int nb = 0; nb < game.getPlayers().size() ; nb++) { //Parcours de la list de joueurs
-            if (range+bonusPorte >= game.getPlayerDistance(this, game.getPlayers().get(nb))){ //si la range + bonus est >= à la distance entre le joueur courant et le joueur a l'indice nb.
+            if (range + bonusPorte >= game.getPlayerDistance(this, game.getPlayers().get(nb))){ //si la range + bonus est >= à la distance entre le joueur courant et le joueur a l'indice nb.
                 PlayersInRange.add(game.getPlayers().get(nb)); //le joueur est donc a porté je l'ajoute donc.
             }
         }
@@ -234,7 +234,11 @@ public class Player {
      * @return distance à laquelle le joueur courant voit le joueur passé en paramètre
      */
     public int distanceTo(Player player) {
-        return game.getPlayerDistance(this,player);
+       /* if (this.getInPlay().contains(this.getCardInPlay("Scope"))){
+            return game.getPlayerDistance(this,player)+1;
+        }else { */
+            return game.getPlayerDistance(this,player);
+        //}
     }
 
     /**
