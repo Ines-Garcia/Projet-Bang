@@ -20,8 +20,8 @@ public class Indians extends OrangeCard {
         choice.add("Non");
 
         for (Player p : joueurs){
-            if (p.getHand().contains("Bang")) {
-                if (p.choose("Voulez vous jouer un Bang", choice, true, false) == "") {
+            if (p.getHand().contains(p.getCardInHand("Missed!"))) {
+                if (p.choose("Voulez vous jouer un Bang", choice, true, false).equals("")) {
                     p.decrementHealth(1, player);
                 } else {
                     //retirer la carte bang de la main du joueur
