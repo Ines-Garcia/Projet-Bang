@@ -12,7 +12,7 @@ public class CatBalou extends OrangeCard {
     }
 
     public void playedBy(Player player) {
-        super.playedBy(player);
+        super.playedBy(player);//
         List<Player> playerRestant = player.getOtherPlayers();
         List<String> cardName = new ArrayList<>();
 
