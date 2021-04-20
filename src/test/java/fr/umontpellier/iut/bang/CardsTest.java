@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -303,6 +301,7 @@ public class CardsTest {
         Card jail = new Jail(1, CardSuit.HEART);
         Card pique = new Beer(3, CardSuit.SPADE);
         Card saloon = new Saloon(1, CardSuit.HEART);
+
         p2.getHand().add(jail);
         p3.getHand().add(saloon);
         drawPile.push(pique);
@@ -496,5 +495,40 @@ public class CardsTest {
         p1.playFromHand(winchester);
         assertEquals(5, p1.getWeaponRange());
     }
+
+    /*
+    @Test
+    void liste_card_discardFromHand() {
+        Card winchester = new Winchester(1, CardSuit.HEART);
+        Card beer = new Beer(1, CardSuit.HEART);
+        Card bang = new Bang(6, CardSuit.DIAMOND);
+        p1.getHand().add(winchester);
+        p1.getHand().add(beer);
+        p1.getHand().add(bang);
+        p1.discardFromHand(beer);
+        assertEquals(winchester, p1.getHand());
+    }
+    */
+
+    @Test
+    void testgetAllCards() {
+        Card catBalou = new CatBalou(1, CardSuit.HEART);
+        Card mustang = new Mustang(1, CardSuit.SPADE);
+        Card winchester = new Winchester(1, CardSuit.SPADE);
+        p1.getHand().add(catBalou);
+        p1.getHand().add(winchester);
+        p1.getHand().add(mustang);
+
+        List <Card> touteLesCards = p1.getAllCards();
+
+        List <Card> cardAttendus = new ArrayList<>();
+
+        cardAttendus.add(catBalou);
+        cardAttendus.add(winchester);
+        cardAttendus.add(mustang);
+
+        assertEquals(cardAttendus, touteLesCards);
+    }
+
 
 }
