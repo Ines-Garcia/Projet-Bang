@@ -10,7 +10,6 @@ public class Barrel extends BlueCard {
 
     public void playedBy(Player player){
         super.playedBy(player);
-        player.addToInPlay(this); //met sur le plateau
     }
 
     public boolean canPlayFromHand(Player player) {
