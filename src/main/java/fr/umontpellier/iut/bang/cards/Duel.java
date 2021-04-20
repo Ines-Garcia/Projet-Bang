@@ -26,7 +26,7 @@ public class Duel extends OrangeCard {
                 playerCible.decrementHealth(1, player); //il ne veut pas
             } else { // si elle veut, le duel commence ici
                 playerCible.discardFromHand(playerCible.getCardInHand("Bang!")); //enleve le bang de la main du joueur cible
-                while (player.getHand().contains(player.getCardInHand("Bang!")) | playerCible.getHand().contains(playerCible.getCardInHand("Bang!")) ){
+                while (player.getHand().contains(player.getCardInHand("Bang!")) || playerCible.getHand().contains(playerCible.getCardInHand("Bang!")) ){
                     if (player.choose("Voulez vous utiliser un Bang ? ", choice, false, true).equals("")) { //demande au joueur d'utiliser un bang
                         player.decrementHealth(1, playerCible); //il ne veut pas
                         break;

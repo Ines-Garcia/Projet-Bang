@@ -131,7 +131,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(mustang));
     }
 
-    @Disabled
+
     @Test
     void testCatBalouCarteEnMain() {
         simpleGame.setInput("p3", "");
@@ -166,7 +166,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(bang3));
     }
 
-    @Disabled
+
     @Test
     void testDuel3BangPass() {
         simpleGame.setInput("p3", "");
@@ -223,7 +223,7 @@ public class CardsTest {
         assertTrue(p2.getInPlay().contains(dynamite));
     }
 
-    @Disabled
+
     @Test
     void testGatling() {
         simpleGame.setInput("Bang!", "Missed!", "");
@@ -386,7 +386,7 @@ public class CardsTest {
         assertTrue(p1.getHand().contains(barrel));
     }
 
-    @Disabled
+
     @Test
     void testRemington() {
         Card remington = new Remington(1, CardSuit.HEART);
@@ -396,7 +396,7 @@ public class CardsTest {
         assertEquals(3, p1.getWeaponRange());
     }
 
-    @Disabled
+
     @Test
     void testRevCarabine() {
         Card revCarabine = new RevCarabine(1, CardSuit.HEART);
@@ -406,7 +406,7 @@ public class CardsTest {
         assertEquals(4, p1.getWeaponRange());
     }
 
-    @Disabled
+
     @Test
     void testSchofield() {
         Card schofield = new Schofield(1, CardSuit.HEART);
@@ -416,7 +416,7 @@ public class CardsTest {
         assertEquals(2, p1.getWeaponRange());
     }
 
-    @Disabled
+
     @Test
     void testScope() {
         Card scope = new Scope(1, CardSuit.HEART);
@@ -486,7 +486,7 @@ public class CardsTest {
         assertTrue(p1.getHand().contains(bang));
     }
 
-    @Disabled
+
     @Test
     void testWinchester() {
         Card winchester = new Winchester(1, CardSuit.HEART);
@@ -495,20 +495,6 @@ public class CardsTest {
         p1.playFromHand(winchester);
         assertEquals(5, p1.getWeaponRange());
     }
-
-    /*
-    @Test
-    void liste_card_discardFromHand() {
-        Card winchester = new Winchester(1, CardSuit.HEART);
-        Card beer = new Beer(1, CardSuit.HEART);
-        Card bang = new Bang(6, CardSuit.DIAMOND);
-        p1.getHand().add(winchester);
-        p1.getHand().add(beer);
-        p1.getHand().add(bang);
-        p1.discardFromHand(beer);
-        assertEquals(winchester, p1.getHand());
-    }
-    */
 
     @Test
     void testgetAllCards() {
