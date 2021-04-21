@@ -127,19 +127,11 @@ public class Player {
      */
     public List<Player> getPlayersInRange(int range) {
         ArrayList<Player> PlayersInRange = new ArrayList<>(); //ArrayList de retour
-         if (this.getInPlay().contains(this.getCardInPlay("Scope"))){ //si le joueur a un scope
-             for (int nb = 0; nb < game.getPlayers().size() ; nb++) { //Parcours de la list de joueurs
-                 if (range + 2 >= game.getPlayerDistance(this, game.getPlayers().get(nb))){ //si la range + 2 ???? est >= à la distance entre le joueur courant et le joueur a l'indice nb.
-                     PlayersInRange.add(game.getPlayers().get(nb)); //le joueur est donc a porté je l'ajoute donc.
+             for (int nb = 0; nb < getOtherPlayers().size() ; nb++) { //Parcours de la list de joueurs
+                 if (range >= distanceTo(getOtherPlayers().get(nb))){ //si la range est >= à la distance entre le joueur courant et le joueur a l'indice nb.
+                     PlayersInRange.add(getOtherPlayers().get(nb)); //le joueur est donc a porté je l'ajoute donc.
                  }
              }
-        }else { //si il n'a pas de scope
-             for (int nb = 0; nb < game.getPlayers().size() ; nb++) { //Parcours de la list de joueurs
-                 if (range >= game.getPlayerDistance(this, game.getPlayers().get(nb))){ //si la range + bonus est >= à la distance entre le joueur courant et le joueur a l'indice nb.
-                     PlayersInRange.add(game.getPlayers().get(nb)); //le joueur est donc a porté je l'ajoute donc.
-                 }
-             }
-        }
         return PlayersInRange;
     }
 
@@ -238,11 +230,14 @@ public class Player {
      * @return distance à laquelle le joueur courant voit le joueur passé en paramètre
      */
     public int distanceTo(Player player) {
-       /* if (this.getInPlay().contains(this.getCardInPlay("Scope"))){
-            return game.getPlayerDistance(this,player)-1;
-        }else { */
-            return game.getPlayerDistance(this,player);
-        //}
+        if (this.getInPlay().contains(this.getCardInPlay("Scope"))){ // si j'ai un scope
+            return game.getPlayerDistance(this,player)-1; //je le vois plus pres
+        }
+        else if (player.getInPlay().contains(player.getCardInPlay("Mustang"))){ // si il a un mustang
+            return game.getPlayerDistance(this,player)+1; //je le vois plus loin
+        }else {
+            return game.getPlayerDistance(this,player); //si j'ai pas de scope et il a pas de mustang ou si j'ai un scope et lui un mustang je le vois a distance normale
+        }
     }
 
     /**
