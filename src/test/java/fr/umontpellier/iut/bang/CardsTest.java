@@ -293,7 +293,7 @@ public class CardsTest {
         assertEquals(5, p5.getHealthPoints());  // rmq: le Shériff a 5 PV max
     }
 
-    @Disabled
+
     @Test
     void testJailNeSortPas() {
         simpleGame.setInput("p3", "Saloon", "");
@@ -312,7 +312,7 @@ public class CardsTest {
         assertTrue(p3.getHand().contains(saloon));
     }
 
-    @Disabled
+
     @Test
     void testJailSortAvecCoeur() {
         simpleGame.setInput("p3", "Saloon", "");
