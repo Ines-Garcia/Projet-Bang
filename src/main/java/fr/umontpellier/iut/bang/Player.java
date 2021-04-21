@@ -233,7 +233,7 @@ public class Player {
         int distanceBase = game.getPlayerDistance(this, player);
 
         if(this.getInPlay().contains(this.getCardInPlay("Scope"))){ //si j'ai un scope
-            distanceBase-=1; //je le vois 1 plus pres //POURQUOI AVEC 2 ça passe ?
+            distanceBase-=1; //je le vois 1 plus pres //POURQUOI AVEC 2 ça passe ? => voir getPlayerDistance
         }else if(player.getInPlay().contains(player.getCardInPlay("Mustang"))){ //si il a un mustang
             distanceBase+=1; //je le vois 1 plus loin
         }/*else if(personnage){
