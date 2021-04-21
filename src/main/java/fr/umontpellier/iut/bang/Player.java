@@ -603,7 +603,7 @@ public class Player {
     }
 
 
-    public Card chooseBlueCard(String instruction, List<BlueCard> choices, boolean showButtons, boolean canPass) {
+    public BlueCard chooseBlueCard(String instruction, List<BlueCard> choices, boolean showButtons, boolean canPass) {
         List<String> cardNames = new ArrayList<>();
         for (BlueCard card : choices) {
             cardNames.add(card.getName());

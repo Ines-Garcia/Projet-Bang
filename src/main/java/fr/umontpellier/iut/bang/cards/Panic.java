@@ -20,13 +20,16 @@ public class Panic extends OrangeCard {
         Player playerCible = player.choosePlayer("Séléctionne ta cible", joueurs, false); //choisis la cible
 
 
-        if (player.choose("Voulez vous prendre une carte en jeu", choice, true, false).equals("")) {  //si il prend une carte en main
+        if (player.choose("Voulez vous prendre une carte en jeu", choice, false, false).equals("")) {  //si il prend une carte en main
             Card carteHasard = playerCible.removeRandomCardFromHand(); //enleve une carte au hasard de la main de la cible et la stock
             player.addToHand(carteHasard); //l'ajoute à la main du joueur courant
         }else { //si il prend une carte en jeu
-            Card bleuCardPicked = playerCible.chooseBlueCard("Séléctionne une carte en jeu carte", playerCible.getInPlay(), true, false);
+            Card bleuCardPicked = playerCible.chooseCard("Séléctionne une carte en jeu carte", playerCible.getAllCards(), false, false);
             playerCible.removeFromInPlay(playerCible.getCardInPlay(bleuCardPicked.getName())); //enleve la carte du terrain
             player.addToHand(bleuCardPicked); //ajoute la carte dans la main
+            /*  BlueCard bleuCardPicked = playerCible.chooseBlueCard("Séléctionne une carte en jeu carte", playerCible.getInPlay(), false, false);
+            playerCible.removeFromInPlay(bleuCardPicked); //enleve la carte du terrain
+            player.addToHand(bleuCardPicked); //ajoute la carte dans la main  */
         }
 
     }
