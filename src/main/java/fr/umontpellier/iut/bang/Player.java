@@ -232,16 +232,14 @@ public class Player {
     public int distanceTo(Player player) {
         int distanceBase = game.getPlayerDistance(this, player);
 
-        if (this.getInPlay().contains(this.getCardInPlay("Scope")) && player.getInPlay().contains(player.getCardInPlay("Mustang"))){ // si j'ai un scope et qu'il a un mustang => effet annulé
-            return distanceBase; //distance sans modif
-        }else if(this.getInPlay().contains(this.getCardInPlay("Scope"))){ //si j'ai un scope
-            return distanceBase-1; //je le vois 1 plus pres
+        if(this.getInPlay().contains(this.getCardInPlay("Scope"))){ //si j'ai un scope
+            distanceBase-=1; //je le vois 1 plus pres //POURQUOI AVEC 2 ça passe ?
         }else if(player.getInPlay().contains(player.getCardInPlay("Mustang"))){ //si il a un mustang
-            return distanceBase+1; //je le vois 1 plus loin
-        }else { //si je n'ai pas de scope et lui pas de mustang
-            return distanceBase; //distance sans modif
-        }
-
+            distanceBase+=1; //je le vois 1 plus loin
+        }/*else if(personnage){
+            code modif des persos
+        }*/
+        return distanceBase;
     }
 
     /**

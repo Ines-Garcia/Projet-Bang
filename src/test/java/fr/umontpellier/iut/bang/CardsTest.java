@@ -346,7 +346,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(missed));
     }
 
-    @Disabled
+
     @Test
     void testMustang() {
         Card mustang = new Mustang(1, CardSuit.HEART);
