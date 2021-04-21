@@ -602,4 +602,23 @@ public class Player {
         }
     }
 
+
+    public Card chooseBlueCard(String instruction, List<BlueCard> choices, boolean showButtons, boolean canPass) {
+        List<String> cardNames = new ArrayList<>();
+        for (BlueCard card : choices) {
+            cardNames.add(card.getName());
+        }
+        String cardName = choose(
+                instruction,
+                cardNames,
+                showButtons,
+                canPass);
+        for (BlueCard card : choices) {
+            if (card.getName().equals(cardName)) {
+                return card;
+            }
+        }
+        return null;
+    }
+
 }

@@ -371,7 +371,7 @@ public class CardsTest {
         assertTrue(p1.getHand().contains(barrel));
     }
 
-    @Disabled
+
     @Test
     void testPanicCarteEnMain() {
         simpleGame.setInput("p2", "");
