@@ -184,6 +184,7 @@ public class Game {
                 distance = 3;
             }
         }
+
         return distance;
     }
 

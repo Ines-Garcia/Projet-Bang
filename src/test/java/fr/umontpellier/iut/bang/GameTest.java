@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GameTest {
 
     private Game minimalGame;
-    private Player p1, p2, p3, p4;
+    private Player p1, p2,p3,p4,p5;
 
     @BeforeEach
     void disableConsole() {
@@ -28,21 +28,24 @@ class GameTest {
 
     @BeforeEach
     void setUp() {
-        List<Player> players = Game.makePlayers(new String[]{"Toto", "Titi", "Tutu", "Tata"});
+        List<Player> players = Game.makePlayers(new String[]{"Toto", "Titi", "Tutu", "Tata", "Tato"});
         minimalGame = new Game(players);
 
         p1 = minimalGame.getPlayers().get(0);
         p2 = minimalGame.getPlayers().get(1);
         p3 = minimalGame.getPlayers().get(2);
         p4 = minimalGame.getPlayers().get(3);
+        p5 = minimalGame.getPlayers().get(4);
+
     }
 
 
     @Test
     void testGetPlayerDistance() {
-        assertEquals(1, minimalGame.getPlayerDistance(p1, p2));
+        assertEquals(1, minimalGame.getPlayerDistance(p1, p5));
+        assertEquals(2, minimalGame.getPlayerDistance(p1, p4));
         assertEquals(2, minimalGame.getPlayerDistance(p1, p3));
-        assertEquals(1, minimalGame.getPlayerDistance(p1, p4));
-        assertEquals(2, minimalGame.getPlayerDistance(p2, p4));
+
+
     }
 }
