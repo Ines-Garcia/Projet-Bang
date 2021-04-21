@@ -22,7 +22,7 @@ public class Duel extends OrangeCard {
         choice.add("");
 
         if (playerCible.getHand().contains(playerCible.getCardInHand("Bang!"))) { //si la cible a un bang
-            if (playerCible.choose("Voulez vous utiliser un Bang ? ", choice, false, true).equals("")) { //demande a la cible si elle veut utiliser un bang
+            if (playerCible.choose("Voulez vous utiliser un Bang ? ", choice, false, true).equals("")) { //demande à la cible si elle veut utiliser un bang
                 playerCible.decrementHealth(1, player); //il ne veut pas
             } else { // si elle veut, le duel commence ici
                 playerCible.discardFromHand(playerCible.getCardInHand("Bang!")); //enleve le bang de la main du joueur cible

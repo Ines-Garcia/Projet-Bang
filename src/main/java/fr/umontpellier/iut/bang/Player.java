@@ -6,6 +6,7 @@ import fr.umontpellier.iut.bang.cards.WeaponCard;
 import fr.umontpellier.iut.bang.characters.BangCharacter;
 import fr.umontpellier.iut.bang.Game;
 import java.util.*;
+import java.util.spi.AbstractResourceBundleProvider;
 
 public class Player {
     /**
@@ -576,28 +577,37 @@ public class Player {
      */
     public void playTurn() {
         // phase 0: setup et résolution des effets préliminaires (dynamite, prison, etc...)
+        if (getInPlay().contains(getCardInPlay("Jail"))) {
+            Card cartedaigner = randomDraw();
+            if (cartedaigner.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
+                discard(cartedaigner);
+                discardFromInPlay(getCardInPlay("Jail"));
+            } else {
+                discardFromInPlay(getCardInPlay("Jail"));
 
-        // phase 1: piocher des cartes
-        bangCharacter.onStartTurn(this);
+                // phase 1: piocher des cartes
+                bangCharacter.onStartTurn(this);
 
-        // phase 2: jouer des cartes
-        while (true) {
-            List<Card> possibleCards = new ArrayList<>();
-            for (Card c : hand) {
-                if (c.canPlayFromHand(this)) { //appel du canPlayFromHand de chaque carte pour savoir si elle peut etre joué
-                    possibleCards.add(c);
+                // phase 2: jouer des cartes
+                while (true) {
+                    List<Card> possibleCards = new ArrayList<>();
+                    for (Card c : hand) {
+                        if (c.canPlayFromHand(this)) { //appel du canPlayFromHand de chaque carte pour savoir si elle peut etre joué
+                            possibleCards.add(c);
+                        }
+                    }
+                    Card card = chooseCard("Choisissez une carte à jouer", possibleCards, false, true);
+                    if (card == null) break;
+                    playFromHand(card);
                 }
-            }
-            Card card = chooseCard("Choisissez une carte à jouer", possibleCards, false, true);
-            if (card == null) break;
-            playFromHand(card);
-        }
 
-        // phase 3: défausser les cartes en trop
-        while (hand.size() > healthPoints) {
-            Card card = chooseCard(String.format("Défaussez pour n'avoir que %d carte(s) en main", healthPoints), hand, false, false);
-            if (card != null) {
-                discardFromHand(card);
+                // phase 3: défausser les cartes en trop
+                while (hand.size() > healthPoints) {
+                    Card card = chooseCard(String.format("Défaussez pour n'avoir que %d carte(s) en main", healthPoints), hand, false, false);
+                    if (card != null) {
+                        discardFromHand(card);
+                    }
+                }
             }
         }
     }
