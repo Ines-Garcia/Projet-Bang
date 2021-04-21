@@ -176,6 +176,14 @@ public class Game {
         if (distance == players.size() - 1){ // si P1 au début et P2 à la fin alors distance = 1
             distance = 1;
         }
+        if (distance == players.size() - 2){
+            distance = 2;
+        }
+        if (players.size()==7){
+            if (distance == players.size() - 3){
+                distance = 3;
+            }
+        }
         return distance;
     }
 
