@@ -239,7 +239,7 @@ public class Player {
      */
     public int distanceTo(Player player) {
        /* if (this.getInPlay().contains(this.getCardInPlay("Scope"))){
-            return game.getPlayerDistance(this,player)+1;
+            return game.getPlayerDistance(this,player)-1;
         }else { */
             return game.getPlayerDistance(this,player);
         //}
