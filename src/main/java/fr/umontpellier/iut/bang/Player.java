@@ -295,6 +295,7 @@ public class Player {
         return false;
     }
 
+
     /**
      * Défausse une carte de la main du joueur
      * <p>
@@ -306,6 +307,10 @@ public class Player {
         if (removeFromHand(c)) {
             game.addToDiscard(c);
         }
+    }
+
+    public void discardFromInPlay(BlueCard c) {
+            game.addToDiscard(c);
     }
 
     /**

@@ -115,7 +115,7 @@ public class CardsTest {
         assertEquals(4, p1.getHealthPoints());
     }
 
-    @Disabled
+
     @Test
     void testCatBalouCarteEnJeu() {
         simpleGame.setInput("p3", "Mustang");
@@ -130,7 +130,6 @@ public class CardsTest {
         assertFalse(p3.getInPlay().contains(mustang));
         assertTrue(discardPile.contains(mustang));
     }
-
 
     @Test
     void testCatBalouCarteEnMain() {
@@ -500,17 +499,18 @@ public class CardsTest {
     void testgetAllCards() {
         Card catBalou = new CatBalou(1, CardSuit.HEART);
         Card mustang = new Mustang(1, CardSuit.SPADE);
-        Card winchester = new Winchester(1, CardSuit.SPADE);
+        Card barrel = new Barrel(1, CardSuit.SPADE);
         p1.getHand().add(catBalou);
-        p1.getHand().add(winchester);
+        p1.getHand().add(barrel);
         p1.getHand().add(mustang);
+
+        p1.playFromHand(barrel);
 
         List <Card> touteLesCards = p1.getAllCards();
 
         List <Card> cardAttendus = new ArrayList<>();
-
+        cardAttendus.add(barrel);
         cardAttendus.add(catBalou);
-        cardAttendus.add(winchester);
         cardAttendus.add(mustang);
 
         assertEquals(cardAttendus, touteLesCards);
