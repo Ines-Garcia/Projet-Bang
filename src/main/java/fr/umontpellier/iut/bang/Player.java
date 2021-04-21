@@ -576,6 +576,13 @@ public class Player {
      * </ul>
      */
     public void playTurn() {
+        // pour dynamite
+        // if entre 2 et 9 pique
+        //      -3 point de vie
+        // else faire tout ce qu'il y ci-dessous
+        //      Enlever d'une inPlay et la rajoute dans le inPlay du voisin
+
+
         // phase 0: setup et résolution des effets préliminaires (dynamite, prison, etc...)
         if (getInPlay().contains(getCardInPlay("Jail"))) {
             Card cartedaigner = randomDraw();
