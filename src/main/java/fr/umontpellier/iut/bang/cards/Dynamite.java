@@ -11,6 +11,7 @@ public class Dynamite extends BlueCard {
 
     public void playedBy(Player player) {
         super.playedBy(player);
+        player.addToInPlay(this);
 
     }
 }

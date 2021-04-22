@@ -312,6 +312,7 @@ public class Player {
             game.addToDiscard(c);
     }
 
+
     /**
      * Retire une carte aléatoire de la main du joueur
      *
@@ -575,15 +576,29 @@ public class Player {
      *     <li> Défausser des cartes si le joueur a plus de cartes qu'il a de points de vie restants
      * </ul>
      */
+
+
     public void playTurn() {
-        // pour dynamite
-        // if entre 2 et 9 pique
-        //      -3 point de vie
-        // else faire tout ce qu'il y ci-dessous
-        //      Enlever d'une inPlay et la rajoute dans le inPlay du voisin
-
-
         // phase 0: setup et résolution des effets préliminaires (dynamite, prison, etc...)
+        //if (getInPlay().contains(getCardInPlay("Dynamite"))) {
+            //Card cartedaigner = randomDraw();
+            //if (cartedaigner.getSuit() == CardSuit.SPADE) { //si la carte degainer est un pique
+                //if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
+                    //decrementHealth(3, this); //??
+                    //discardFromInPlay(getCardInPlay("Dynamite"));
+                //}
+                //else {
+                    //BlueCard dyna = getCardInPlay("Dynamite");
+                    //removeFromInPlay(dyna);
+                    //getOtherPlayers().get(0).addToInPlay(dyna);
+
+                //} // ELLE VEUT PAS TOURNER CETTE P**IN DE DYNAMITE
+            //}
+            //else {
+                //removeFromInPlay(getCardInPlay("Dynamite"));
+                //getOtherPlayers().get(0).addToInPlay(getCardInPlay("Dynamite"));
+            //}
+        //}
         if (getInPlay().contains(getCardInPlay("Jail"))) {
             Card cartedaigner = randomDraw();
             if (cartedaigner.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
