@@ -59,9 +59,8 @@ public class Player {
         return bangDejaJoue;
     }
 
-    public Player setBangDejaJoue(boolean bangDejaJoue) {
+    public void setBangDejaJoue(boolean bangDejaJoue) {
         this.bangDejaJoue = bangDejaJoue;
-        return this;
     }
 
     public String getName() {
