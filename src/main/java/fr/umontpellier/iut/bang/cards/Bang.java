@@ -38,7 +38,7 @@ public class Bang extends OrangeCard {
         }else { //si la cible n'as ni de barrel ni de missed
             playerCible.decrementHealth(1,player); //met a jours les pv
         }
-        if(player.getWeapon().getName()=="Volcanic"){
+        if(player.getInPlay().contains(player.getCardInPlay("Volcanic"))){
             List<String> choiceVolcanic = new ArrayList<>();
             choiceVolcanic.add("Bang!");//
             choiceVolcanic.add("");

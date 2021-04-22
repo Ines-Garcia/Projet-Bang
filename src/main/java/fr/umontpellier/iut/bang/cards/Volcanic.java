@@ -7,15 +7,12 @@ public class Volcanic extends WeaponCard {
         super("Volcanic", value, suit);
     }
 
-    @Override
     public int getRange() {
         return 1;
     }
 
-    @Override
     public void playedBy(Player player) {
         super.playedBy(player);
         player.setWeapon(this);
-
     }
 }

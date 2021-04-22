@@ -469,6 +469,7 @@ public class CardsTest {
     @Test
     void testGetWeaponVolcanic() {
         Card volcanic = new Volcanic(1, CardSuit.HEART);
+        p1.getHand().add(volcanic);
         p1.playFromHand(volcanic);
 
         assertEquals(volcanic, p1.getWeapon());//
