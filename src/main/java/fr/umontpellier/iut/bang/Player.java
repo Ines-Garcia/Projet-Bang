@@ -59,9 +59,8 @@ public class Player {
         return bangDejaJoue;
     }
 
-    public Player setBangDejaJoue(boolean bangDejaJoue) {
+    public void setBangDejaJoue(boolean bangDejaJoue) {
         this.bangDejaJoue = bangDejaJoue;
-        return this;
     }
 
     public String getName() {
@@ -593,19 +592,35 @@ public class Player {
             Card cartedaigner = randomDraw();
             if (cartedaigner.getSuit() == CardSuit.SPADE) { //si la carte degainer est un pique
                 if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
-                    decrementHealth(3, this); //??
-                    discardFromInPlay(getCardInPlay("Dynamite"));
+                    this.decrementHealth(3, this); //??
+                    this.discardFromInPlay(this.getCardInPlay("Dynamite"));
                 }
                 else {
-                    BlueCard dyna = getCardInPlay("Dynamite");
-                    removeFromInPlay(dyna);
-                    getOtherPlayers().get(1).addToInPlay(dyna);
+                    getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite"));
+                    this.removeFromInPlay(this.getCardInPlay("Dynamite"));
 
                 } // ELLE VEUT PAS TOURNER CETTE P**IN DE DYNAMITE
             }
             else {
-                   removeFromInPlay(getCardInPlay("Dynamite"));
-                   getOtherPlayers().get(1).addToInPlay(getCardInPlay("Dynamite"));
+                   removeFromInPlay(this.getCardInPlay("Dynamite"));
+                   this.getOtherPlayers().get(1).addToInPlay(getCardInPlay("Dynamite"));
+            }
+        }
+        if (getInPlay().contains(getCardInPlay("Dynamite"))) {
+            Card cartedaigner = randomDraw();
+            if (cartedaigner.getSuit() == CardSuit.SPADE) { //si la carte degainer est un pique
+                if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
+                    this.decrementHealth(3, this); //??
+                    this.discardFromInPlay(this.getCardInPlay("Dynamite"));
+                }
+                else {
+                    getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite"));
+                    this.removeFromInPlay(this.getCardInPlay("Dynamite"));
+                } // ELLE VEUT PAS TOURNER CETTE P**IN DE DYNAMITE
+            }
+            else {
+                getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite"));
+                this.removeFromInPlay(this.getCardInPlay("Dynamite"));
             }
         }
         if (getInPlay().contains(getCardInPlay("Jail"))) {
