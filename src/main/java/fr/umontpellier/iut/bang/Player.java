@@ -42,6 +42,9 @@ public class Player {
      */
     private WeaponCard weapon;
 
+    private boolean bangDejaJoue;
+
+
 
     public Player(String name, BangCharacter bangCharacter, Role role) {
         this.name = name;
@@ -50,6 +53,15 @@ public class Player {
         healthPoints = getHealthPointsMax();
         inPlay = new ArrayList<>();
         hand = new ArrayList<>();
+    }
+
+    public boolean isBangDejaJoue() {
+        return bangDejaJoue;
+    }
+
+    public Player setBangDejaJoue(boolean bangDejaJoue) {
+        this.bangDejaJoue = bangDejaJoue;
+        return this;
     }
 
     public String getName() {
@@ -311,7 +323,6 @@ public class Player {
     public void discardFromInPlay(BlueCard c) {
             game.addToDiscard(c);
     }
-
 
     /**
      * Retire une carte aléatoire de la main du joueur
@@ -576,8 +587,6 @@ public class Player {
      *     <li> Défausser des cartes si le joueur a plus de cartes qu'il a de points de vie restants
      * </ul>
      */
-
-
     public void playTurn() {
         // phase 0: setup et résolution des effets préliminaires (dynamite, prison, etc...)
         //if (getInPlay().contains(getCardInPlay("Dynamite"))) {

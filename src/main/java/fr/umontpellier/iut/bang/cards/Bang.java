@@ -38,6 +38,7 @@ public class Bang extends OrangeCard {
         }else { //si la cible n'as ni de barrel ni de missed
             playerCible.decrementHealth(1,player); //met a jours les pv
         }
+        player.setBangDejaJoue(true); //Sert au Volcanic et a Willy The Kid
     }
 
     /* List<Player> joueurs = player.getOtherPlayers(); //idee mustang
@@ -58,11 +59,16 @@ public class Bang extends OrangeCard {
     public boolean canPlayFromHand(Player player) {
         if (player.getGame().getCurrentPlayer()==player){ //si c'est le tour du joueur passé en parametre
            if (player.getHand().contains(this)){ //si le joueur en parametre a la carte en main //pas besoin car playFromHand test deja si carte presente dans la main
+               if (player.getInPlay().contains(player.getCardInPlay("Volcanic"))){
+                   return true;
+               }
+               if (player.isBangDejaJoue()){
+                   return false;
+               }
                return true;
            }
            return false;
         }
         return false;
     }
-
 }
