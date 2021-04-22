@@ -102,6 +102,8 @@ public class Player {
         return playerAllCards; //retourne la liste
     }
 
+
+
     /**
      * @return la portée de l'arme équipée (1 si aucune arme équipée)
      */
