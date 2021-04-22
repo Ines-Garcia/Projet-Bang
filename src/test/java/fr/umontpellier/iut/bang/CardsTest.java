@@ -472,7 +472,8 @@ public class CardsTest {
         p1.getHand().add(volcanic);
         p1.playFromHand(volcanic);
 
-        assertEquals(volcanic, p1.getWeapon());//
+        assertEquals(volcanic, p1.getWeapon());
+        //
     }
 
 
