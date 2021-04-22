@@ -41,6 +41,7 @@ public class Player {
      */
     private WeaponCard weapon;
 
+    private boolean bangDejaJoue;
 
     public Player(String name, BangCharacter bangCharacter, Role role) {
         this.name = name;
@@ -49,6 +50,7 @@ public class Player {
         healthPoints = getHealthPointsMax();
         inPlay = new ArrayList<>();
         hand = new ArrayList<>();
+        bangDejaJoue = false;
     }
 
     public String getName() {
@@ -181,6 +183,15 @@ public class Player {
             }
         }
         return null;
+    }
+
+    public boolean isBangDejaJoue() {
+        return bangDejaJoue;
+    }
+
+    public Player setBangDejaJoue(boolean bangDejaJoue) {
+        this.bangDejaJoue = bangDejaJoue;
+        return this;
     }
 
     /**
@@ -577,6 +588,7 @@ public class Player {
     public void playTurn() {
         // phase 0: setup et résolution des effets préliminaires (dynamite, prison, etc...)
 
+        setBangDejaJoue(false);
         // phase 1: piocher des cartes
         bangCharacter.onStartTurn(this);
 
@@ -620,5 +632,4 @@ public class Player {
         }
         return null;
     }
-
 }
