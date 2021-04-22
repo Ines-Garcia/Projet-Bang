@@ -466,6 +466,15 @@ public class CardsTest {
         assertTrue(discardPile.contains(bang3));
     }
 
+    @Test
+    void testGetWeaponVolcanic() {
+        Card volcanic = new Volcanic(1, CardSuit.HEART);
+        p1.playFromHand(volcanic);
+
+        assertEquals(volcanic, p1.getWeapon());
+    }
+
+
     @Disabled
     @Test
     void testWellsFargo() {
