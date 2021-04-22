@@ -44,8 +44,6 @@ public class Player {
 
     private boolean bangDejaJoue = false;
 
-
-
     public Player(String name, BangCharacter bangCharacter, Role role) {
         this.name = name;
         this.role = role;
