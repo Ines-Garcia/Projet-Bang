@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -45,7 +46,17 @@ class GameTest {
         assertEquals(1, minimalGame.getPlayerDistance(p1, p5));
         assertEquals(2, minimalGame.getPlayerDistance(p1, p4));
         assertEquals(2, minimalGame.getPlayerDistance(p1, p3));
+    }
 
+    @Test
+    void testgetOtherPlayer() {
+        List<Player> listPlayerAttendu = new ArrayList<>();
+        listPlayerAttendu.add(p1);
+        listPlayerAttendu.add(p2);
+        listPlayerAttendu.add(p3);
+        listPlayerAttendu.add(p4);
+        listPlayerAttendu.add(p5);
+        assertEquals(listPlayerAttendu, p1.getOtherPlayers());
 
     }
 }
