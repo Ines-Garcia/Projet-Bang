@@ -207,8 +207,6 @@ public class Player {
         }
     }
 
-
-
     /**
      * Décrémente le nombre de points de vie du joueur de la valeur indiquée. Si les points de vie du joueur passent à
      * 0 ou moins mais que le joueur a des Bières en main et qu'il peut les utiliser, elles sont automatiquement
@@ -590,34 +588,62 @@ public class Player {
      */
     public void playTurn() {
         // phase 0: setup et résolution des effets préliminaires (dynamite, prison, etc...)
+        //if (getInPlay().contains(getCardInPlay("Dynamite"))) {
+            //Card cartedaigner = randomDraw();
+            //if (cartedaigner.getSuit() == CardSuit.SPADE) { //si la carte degainer est un pique
+                //if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
+                    //decrementHealth(3, this); //??
+                    //discardFromInPlay(getCardInPlay("Dynamite"));
+                //}
+                //else {
+                    //BlueCard dyna = getCardInPlay("Dynamite");
+                    //removeFromInPlay(dyna);
+                    //getOtherPlayers().get(0).addToInPlay(dyna);
 
-        // phase 1: piocher des cartes
-        bangCharacter.onStartTurn(this);
+                //} // ELLE VEUT PAS TOURNER CETTE P**IN DE DYNAMITE
+            //}
+            //else {
+                //removeFromInPlay(getCardInPlay("Dynamite"));
+                //getOtherPlayers().get(0).addToInPlay(getCardInPlay("Dynamite"));
+            //}
+        //}
+        if (getInPlay().contains(getCardInPlay("Jail"))) {
+            Card cartedaigner = randomDraw();
+            if (cartedaigner.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
+                discard(cartedaigner);
+                discardFromInPlay(getCardInPlay("Jail"));
+            } else {
+                discardFromInPlay(getCardInPlay("Jail"));
 
-        // phase 2: jouer des cartes
-        while (true) {
-            List<Card> possibleCards = new ArrayList<>();
-            for (Card c : hand) {
-                if (c.canPlayFromHand(this)) { //appel du canPlayFromHand de chaque carte pour savoir si elle peut etre joué
-                    possibleCards.add(c);
+                // phase 1: piocher des cartes
+                bangCharacter.onStartTurn(this);
+
+                // phase 2: jouer des cartes
+                while (true) {
+                    List<Card> possibleCards = new ArrayList<>();
+                    for (Card c : hand) {
+                        if (c.canPlayFromHand(this)) { //appel du canPlayFromHand de chaque carte pour savoir si elle peut etre joué
+                            possibleCards.add(c);
+                        }
+                    }
+                    Card card = chooseCard("Choisissez une carte à jouer", possibleCards, false, true);
+                    if (card == null) break;
+                    playFromHand(card);
                 }
-            }
-            Card card = chooseCard("Choisissez une carte à jouer", possibleCards, false, true);
-            if (card == null) break;
-            playFromHand(card);
-        }
 
-        // phase 3: défausser les cartes en trop
-        while (hand.size() > healthPoints) {
-            Card card = chooseCard(String.format("Défaussez pour n'avoir que %d carte(s) en main", healthPoints), hand, false, false);
-            if (card != null) {
-                discardFromHand(card);
+                // phase 3: défausser les cartes en trop
+                while (hand.size() > healthPoints) {
+                    Card card = chooseCard(String.format("Défaussez pour n'avoir que %d carte(s) en main", healthPoints), hand, false, false);
+                    if (card != null) {
+                        discardFromHand(card);
+                    }
+                }
             }
         }
     }
 
 
-    public Card chooseBlueCard(String instruction, List<BlueCard> choices, boolean showButtons, boolean canPass) {
+    public BlueCard chooseBlueCard(String instruction, List<BlueCard> choices, boolean showButtons, boolean canPass) {
         List<String> cardNames = new ArrayList<>();
         for (BlueCard card : choices) {
             cardNames.add(card.getName());
