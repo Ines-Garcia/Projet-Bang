@@ -42,6 +42,9 @@ public class Player {
      */
     private WeaponCard weapon;
 
+    private boolean bangDejaJoue;
+
+
 
     public Player(String name, BangCharacter bangCharacter, Role role) {
         this.name = name;
@@ -50,6 +53,15 @@ public class Player {
         healthPoints = getHealthPointsMax();
         inPlay = new ArrayList<>();
         hand = new ArrayList<>();
+    }
+
+    public boolean isBangDejaJoue() {
+        return bangDejaJoue;
+    }
+
+    public Player setBangDejaJoue(boolean bangDejaJoue) {
+        this.bangDejaJoue = bangDejaJoue;
+        return this;
     }
 
     public String getName() {
@@ -195,6 +207,8 @@ public class Player {
             healthPoints = getHealthPointsMax();
         }
     }
+
+
 
     /**
      * Décrémente le nombre de points de vie du joueur de la valeur indiquée. Si les points de vie du joueur passent à
