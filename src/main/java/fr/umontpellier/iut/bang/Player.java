@@ -42,7 +42,7 @@ public class Player {
      */
     private WeaponCard weapon;
 
-    private boolean bangDejaJoue;
+    private boolean bangDejaJoue = false;
 
 
 
