@@ -471,7 +471,7 @@ public class CardsTest {
         Card volcanic = new Volcanic(1, CardSuit.HEART);
         p1.playFromHand(volcanic);
 
-        assertEquals(volcanic, p1.getWeapon());
+        assertEquals(volcanic, p1.getWeapon());//
     }
 
 

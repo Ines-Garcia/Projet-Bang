@@ -40,7 +40,7 @@ public class Bang extends OrangeCard {
         }
         if(player.getWeapon().getName()=="Volcanic"){
             List<String> choiceVolcanic = new ArrayList<>();
-            choiceVolcanic.add("Bang!");
+            choiceVolcanic.add("Bang!");//
             choiceVolcanic.add("");
             while(player.getHand().contains(player.getCardInHand("Bang!"))){
                 String choixFaits = playerCible.choose("Voulez vous jouer un Bang", choiceVolcanic, true, true);
