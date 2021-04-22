@@ -590,80 +590,64 @@ public class Player {
      */
     public void playTurn() {
         // phase 0: setup et résolution des effets préliminaires (dynamite, prison, etc...)
+        boolean prison = false;
         if (getInPlay().contains(getCardInPlay("Dynamite"))) {
             Card cartedaigner = randomDraw();
             if (cartedaigner.getSuit() == CardSuit.SPADE) { //si la carte degainer est un pique
                 if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
-                    this.decrementHealth(3, this); //??
-                    this.discardFromInPlay(this.getCardInPlay("Dynamite"));
+                    this.decrementHealth(3, this); //la dynamite explose
+                    this.discardFromInPlay(this.getCardInPlay("Dynamite")); //la dynamite est defaussée
                 }
                 else {
-                    getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite"));
-                    this.removeFromInPlay(this.getCardInPlay("Dynamite"));
+                    getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
+                    this.removeFromInPlay(this.getCardInPlay("Dynamite")); //la dynamite est retire du joueur courant
 
                 } // ELLE VEUT PAS TOURNER CETTE P**IN DE DYNAMITE
             }
             else {
-                   removeFromInPlay(this.getCardInPlay("Dynamite"));
-                   this.getOtherPlayers().get(1).addToInPlay(getCardInPlay("Dynamite"));
-            }
-        }
-        if (getInPlay().contains(getCardInPlay("Dynamite"))) {
-            Card cartedaigner = randomDraw();
-            if (cartedaigner.getSuit() == CardSuit.SPADE) { //si la carte degainer est un pique
-                if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
-                    this.decrementHealth(3, this); //??
-                    this.discardFromInPlay(this.getCardInPlay("Dynamite"));
-                }
-                else {
-                    getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite"));
-                    this.removeFromInPlay(this.getCardInPlay("Dynamite"));
-                } // ELLE VEUT PAS TOURNER CETTE P**IN DE DYNAMITE
-            }
-            else {
-                getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite"));
-                this.removeFromInPlay(this.getCardInPlay("Dynamite"));
+                this.getOtherPlayers().get(1).addToInPlay(getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
+                removeFromInPlay(this.getCardInPlay("Dynamite")); //la dynamite est retire du joueur courant
             }
         }
         if (getInPlay().contains(getCardInPlay("Jail"))) {
             Card cartedaigner = randomDraw();
             if (cartedaigner.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
-                discard(cartedaigner);
-                discardFromInPlay(getCardInPlay("Jail"));
-                // mettre un break !!!!!!
+                discardFromInPlay(getCardInPlay("Jail")); //je defausse la carte
+                prison=true; //je suis en prison donc je passe mon tour
             } else {
-                discardFromInPlay(getCardInPlay("Jail"));
-
+                discardFromInPlay(getCardInPlay("Jail")); //je defausse la prison mais je peux jouer mon tour
             }
         }
 
-        // phase 1: piocher des cartes
-        bangCharacter.onStartTurn(this);
+        if (!prison){ //si je suis pas en prison
 
-        // phase 2: jouer des cartes
-        while (true) {
-            List<Card> possibleCards = new ArrayList<>();
-            for (Card c : hand) {
-                if (c.canPlayFromHand(this)) { //appel du canPlayFromHand de chaque carte pour savoir si elle peut etre joué
-                    possibleCards.add(c);
+            // phase 1: piocher des cartes
+            bangCharacter.onStartTurn(this);
+
+            // phase 2: jouer des cartes
+            while (true) {
+                List<Card> possibleCards = new ArrayList<>();
+                for (Card c : hand) {
+                    if (c.canPlayFromHand(this)) { //appel du canPlayFromHand de chaque carte pour savoir si elle peut etre joué
+                        possibleCards.add(c);
+                    }
                 }
-            }
-            Card card = chooseCard("Choisissez une carte à jouer", possibleCards, false, true);
-            if (card == null) break;
+                Card card = chooseCard("Choisissez une carte à jouer", possibleCards, false, true);
+                if (card == null) break;
                 playFromHand(card);
             }
 
-        // phase 3: défausser les cartes en trop
-        while (hand.size() > healthPoints) {
-            Card card = chooseCard(String.format("Défaussez pour n'avoir que %d carte(s) en main", healthPoints), hand, false, false);
-            if (card != null) {
-                discardFromHand(card);
+            // phase 3: défausser les cartes en trop
+            while (hand.size() > healthPoints) {
+                Card card = chooseCard(String.format("Défaussez pour n'avoir que %d carte(s) en main", healthPoints), hand, false, false);
+                if (card != null) {
+                    discardFromHand(card);
+                }
             }
-        }
 
         // phase 4: remettre boolean à bang deja jouer a faux
         bangDejaJoue = false;
-
+        }
 
     }
 
