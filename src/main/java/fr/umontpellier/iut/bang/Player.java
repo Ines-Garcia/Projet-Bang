@@ -617,7 +617,7 @@ public class Player {
             }
         }
 
-        if (!prison){ //si je suis pas en prison
+        if (prison){ //si je suis pas en prison
 
             // phase 1: piocher des cartes
             bangCharacter.onStartTurn(this);

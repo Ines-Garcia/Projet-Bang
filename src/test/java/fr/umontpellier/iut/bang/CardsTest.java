@@ -526,5 +526,16 @@ public class CardsTest {
         assertEquals(cardAttendus, touteLesCards);
     }
 
+    @Test
+    void testSizeCarteEnMain() {
+        Card catBalou = new CatBalou(1, CardSuit.HEART);
+        Card mustang = new Mustang(1, CardSuit.SPADE);
+        Card barrel = new Barrel(1, CardSuit.SPADE);
+        p1.getHand().add(catBalou);
+        p1.getHand().add(barrel);
+        p1.getHand().add(mustang);
+
+        assertEquals(3, p1.getHand().size());
+    }
 
 }
