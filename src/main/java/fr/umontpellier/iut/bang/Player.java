@@ -588,37 +588,36 @@ public class Player {
      */
     public void playTurn() {
         // phase 0: setup et résolution des effets préliminaires (dynamite, prison, etc...)
-        boolean prison = false;
         if (getInPlay().contains(getCardInPlay("Dynamite"))) {
             Card cartedaigner = randomDraw();
             if (cartedaigner.getSuit() == CardSuit.SPADE) { //si la carte degainer est un pique
                 if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
                     this.decrementHealth(3, this); //la dynamite explose
                     this.discardFromInPlay(this.getCardInPlay("Dynamite")); //la dynamite est defaussée
-                }
-                else {
+                } else {
                     getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
                     this.removeFromInPlay(this.getCardInPlay("Dynamite")); //la dynamite est retire du joueur courant
 
                 } // ELLE VEUT PAS TOURNER CETTE P**IN DE DYNAMITE
-            }
-            else {
+            } else {
                 this.getOtherPlayers().get(1).addToInPlay(getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
                 removeFromInPlay(this.getCardInPlay("Dynamite")); //la dynamite est retire du joueur courant
             }
         }
+
+        boolean prison=false;
         if (getInPlay().contains(getCardInPlay("Jail"))) {
             Card cartedaigner = randomDraw();
             if (cartedaigner.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
                 discardFromInPlay(getCardInPlay("Jail")); //je defausse la carte
-                prison=true; //je suis en prison donc je passe mon tour
+                prison = true; //je suis en prison donc je passe mon tour
             } else {
                 discardFromInPlay(getCardInPlay("Jail")); //je defausse la prison mais je peux jouer mon tour
             }
         }
 
-        if (prison){ //si je suis pas en prison (prison est DEJA  a false : voir ligne 591)
 
+        if (!prison) {
             // phase 1: piocher des cartes
             bangCharacter.onStartTurn(this);
 
@@ -636,17 +635,16 @@ public class Player {
             }
 
             // phase 3: défausser les cartes en trop
-            while (hand.size() > healthPoints) {
+            while (hand.size() <= healthPoints) {
                 Card card = chooseCard(String.format("Défaussez pour n'avoir que %d carte(s) en main", healthPoints), hand, false, false);
                 if (card != null) {
                     discardFromHand(card);
                 }
             }
 
-        // phase 4: remettre boolean à bang deja jouer a faux
-        bangDejaJoue = false;
+            // phase 4: remettre boolean à bang deja jouer a faux
+            bangDejaJoue = false;
         }
-
     }
 
 

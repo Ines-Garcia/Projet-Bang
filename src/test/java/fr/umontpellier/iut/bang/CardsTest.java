@@ -582,16 +582,13 @@ public class CardsTest {
     @Test
     void testVolcanicSimplifie() {
         simpleGame.setInput("Bang!", "p2", "");
-        Card volcanic = new Volcanic(1, CardSuit.HEART);
         Card bang1 = new Bang(1, CardSuit.SPADE);
         Card bang2 = new Bang(1, CardSuit.SPADE);
         Card bang3 = new Bang(1, CardSuit.SPADE);
 
-        p1.getHand().add(volcanic);
         p1.getHand().add(bang1);
         p1.getHand().add(bang2);
         p1.getHand().add(bang3);
-        p1.playFromHand(volcanic);
         assertEquals(1, p1.getWeaponRange());
         p1.playTurn();
 
