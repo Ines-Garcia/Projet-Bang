@@ -538,4 +538,84 @@ public class CardsTest {
         assertEquals(3, p1.getHand().size());
     }
 
+    @Test
+    void testHandContainsBang() {
+        Card bang = new Bang(1, CardSuit.HEART);
+        Card barrel = new Barrel(1, CardSuit.SPADE);
+        p1.getHand().add(bang);
+        p1.getHand().add(barrel);
+
+
+        assertTrue(p1.getHand().contains(p1.getCardInHand("Bang!")));
+    }
+
+    @Test
+    void testGetPlayersInRange() {
+        Card volcanic = new Volcanic(1, CardSuit.SPADE);
+        p1.getHand().add(volcanic);
+        p1.playFromHand(volcanic);
+
+        List<Player> PlayerInRange = p1.getPlayersInRange(p1.getWeaponRange()); //recup les joueurs a porte
+
+        List<Player> playerListExpected = new ArrayList<>();
+        playerListExpected.add(p1);
+        playerListExpected.add(p2);
+        playerListExpected.add(p5);
+
+        assertEquals(playerListExpected, PlayerInRange);
+    }
+
+    @Test
+    void testChoosePlayer() {
+        simpleGame.setInput("p2");
+        Card volcanic = new Volcanic(1, CardSuit.SPADE);
+        p1.getHand().add(volcanic);
+        p1.playFromHand(volcanic);
+        p1.playTurn();
+
+        List<Player> PlayerInRange = p1.getPlayersInRange(p1.getWeaponRange()); //recup les joueurs a porte
+
+        Player playerCibleDuVolcanic = p1.choosePlayer("Séléctionne ta cible", PlayerInRange, false); //choisis la cible
+        assertEquals(p2, playerCibleDuVolcanic);
+    }
+
+    @Test
+    void testVolcanicSimplifie() {
+        simpleGame.setInput("Bang!", "p2", "");
+        Card volcanic = new Volcanic(1, CardSuit.HEART);
+        Card bang1 = new Bang(1, CardSuit.SPADE);
+        Card bang2 = new Bang(1, CardSuit.SPADE);
+        Card bang3 = new Bang(1, CardSuit.SPADE);
+
+        p1.getHand().add(volcanic);
+        p1.getHand().add(bang1);
+        p1.getHand().add(bang2);
+        p1.getHand().add(bang3);
+        p1.playFromHand(volcanic);
+        assertEquals(1, p1.getWeaponRange());
+        p1.playTurn();
+
+        assertEquals(3, p2.getHealthPoints());
+        assertTrue(discardPile.contains(bang1));
+        assertTrue(discardPile.contains(bang2));
+        assertTrue(discardPile.contains(bang3));
+    }
+
+    @Test
+    void testChoose() {
+        simpleGame.setInput("Bang!", "p2");
+        List<String> choiceVolcanic = new ArrayList<>(); //choix de Bang! ou non
+        choiceVolcanic.add("Bang!");//
+        choiceVolcanic.add("");
+
+        p1.playTurn();
+        String choixBang = p1.choose("Voulez vous jouer un Bang", choiceVolcanic, true, true);//je demande si le joueur veux Bang ou passer son tour
+        Player choixPlayer = p1.choosePlayer("Quel joueur selectionnez vous", p1.getOtherPlayers(), true);
+
+        assertEquals("Bang!", choixBang);
+        assertEquals(p2, choixPlayer);
+    }
+
+
+
 }
