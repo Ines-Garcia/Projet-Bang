@@ -635,7 +635,7 @@ public class Player {
             }
 
             // phase 3: défausser les cartes en trop
-            while (hand.size() <= healthPoints) {
+            while (hand.size() > healthPoints) {
                 Card card = chooseCard(String.format("Défaussez pour n'avoir que %d carte(s) en main", healthPoints), hand, false, false);
                 if (card != null) {
                     discardFromHand(card);

@@ -46,7 +46,7 @@ public class CardsTest {
         p5 = simpleGame.getPlayers().get(4);
     }
 
-
+    @Disabled
     @Test
     void testBang() {
         simpleGame.setInput("p2");
@@ -57,7 +57,7 @@ public class CardsTest {
         assertEquals(3, p2.getHealthPoints());
     }
 
-
+    @Disabled
     @Test
     void testBangHorsPortee() {
         simpleGame.setInput("p3", "p2");
@@ -69,7 +69,7 @@ public class CardsTest {
         assertEquals(4, p3.getHealthPoints());
     }
 
-
+    @Disabled
     @Test
     void testBarrelAvecCoeur() {
         simpleGame.setInput("p2");
@@ -86,7 +86,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(beer));
     }
 
-
+    @Disabled
     @Test
     void testBarrelPasDeCoeur() {
         simpleGame.setInput("p2");
@@ -103,7 +103,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(beer));
     }
 
-
+    @Disabled
     @Test
     void testBeer() {
         Card beer = new Beer(1, CardSuit.HEART);
@@ -131,6 +131,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(mustang));
     }
 
+    @Disabled
     @Test
     void testCatBalouCarteEnMain() {
         simpleGame.setInput("p3", "");
@@ -165,7 +166,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(bang3));
     }
 
-
+    @Disabled
     @Test
     void testDuel3BangPass() {
         simpleGame.setInput("p3", "");
@@ -222,7 +223,7 @@ public class CardsTest {
         assertTrue(p2.getInPlay().contains(dynamite));
     }
 
-
+    @Disabled
     @Test
     void testGatling() {
         simpleGame.setInput("Bang!", "Missed!", "");
@@ -271,6 +272,7 @@ public class CardsTest {
         assertEquals("Beer", p2.getHand().get(0).getName());
     }
 
+    @Disabled
     @Test
     void testIndians() {
         simpleGame.setInput("Bang!", "Missed!", "", "Bang!");
@@ -293,7 +295,7 @@ public class CardsTest {
         assertEquals(5, p5.getHealthPoints());  // rmq: le Shériff a 5 PV max
     }
 
-
+    @Disabled
     @Test
     void testJailNeSortPas() {
         simpleGame.setInput("p3", "Saloon", "");
@@ -312,7 +314,7 @@ public class CardsTest {
         assertTrue(p3.getHand().contains(saloon));
     }
 
-
+    @Disabled
     @Test
     void testJailSortAvecCoeur() {
         simpleGame.setInput("p3", "Saloon", "");
@@ -331,7 +333,7 @@ public class CardsTest {
         assertFalse(p3.getHand().contains(saloon));
     }
 
-
+    @Disabled
     @Test
     void testMissed() {
         simpleGame.setInput("p2", "Missed!");
@@ -345,7 +347,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(missed));
     }
 
-
+    @Disabled
     @Test
     void testMustang() {
         Card mustang = new Mustang(1, CardSuit.HEART);
@@ -371,7 +373,7 @@ public class CardsTest {
         assertTrue(p1.getHand().contains(barrel));
     }
 
-
+    @Disabled
     @Test
     void testPanicCarteEnMain() {
         simpleGame.setInput("p2", "");
@@ -385,7 +387,7 @@ public class CardsTest {
         assertTrue(p1.getHand().contains(barrel));
     }
 
-
+    @Disabled
     @Test
     void testRemington() {
         Card remington = new Remington(1, CardSuit.HEART);
@@ -395,7 +397,7 @@ public class CardsTest {
         assertEquals(3, p1.getWeaponRange());
     }
 
-
+    @Disabled
     @Test
     void testRevCarabine() {
         Card revCarabine = new RevCarabine(1, CardSuit.HEART);
@@ -405,7 +407,7 @@ public class CardsTest {
         assertEquals(4, p1.getWeaponRange());
     }
 
-
+    @Disabled
     @Test
     void testSchofield() {
         Card schofield = new Schofield(1, CardSuit.HEART);
@@ -415,7 +417,7 @@ public class CardsTest {
         assertEquals(2, p1.getWeaponRange());
     }
 
-
+    @Disabled
     @Test
     void testScope() {
         Card scope = new Scope(1, CardSuit.HEART);
@@ -429,6 +431,7 @@ public class CardsTest {
         assertFalse(p3.getPlayersInRange(1).contains(p1));
     }
 
+    @Disabled
     @Test
     void testStageCoach() {
         Card stageCoach = new Stagecoach(1, CardSuit.HEART);
@@ -466,6 +469,7 @@ public class CardsTest {
         assertTrue(discardPile.contains(bang3));
     }
 
+    @Disabled
     @Test
     void testGetWeaponVolcanic() {
         Card volcanic = new Volcanic(1, CardSuit.HEART);
@@ -495,7 +499,7 @@ public class CardsTest {
         assertTrue(p1.getHand().contains(bang));
     }
 
-
+    @Disabled
     @Test
     void testWinchester() {
         Card winchester = new Winchester(1, CardSuit.HEART);
@@ -505,6 +509,7 @@ public class CardsTest {
         assertEquals(5, p1.getWeaponRange());
     }
 
+    @Disabled
     @Test
     void testgetAllCards() {
         Card catBalou = new CatBalou(1, CardSuit.HEART);
@@ -526,6 +531,7 @@ public class CardsTest {
         assertEquals(cardAttendus, touteLesCards);
     }
 
+    @Disabled
     @Test
     void testSizeCarteEnMain() {
         Card catBalou = new CatBalou(1, CardSuit.HEART);
@@ -538,6 +544,7 @@ public class CardsTest {
         assertEquals(3, p1.getHand().size());
     }
 
+    @Disabled
     @Test
     void testHandContainsBang() {
         Card bang = new Bang(1, CardSuit.HEART);
@@ -549,6 +556,7 @@ public class CardsTest {
         assertTrue(p1.getHand().contains(p1.getCardInHand("Bang!")));
     }
 
+    @Disabled
     @Test
     void testGetPlayersInRange() {
         Card volcanic = new Volcanic(1, CardSuit.SPADE);
@@ -565,48 +573,20 @@ public class CardsTest {
         assertEquals(playerListExpected, PlayerInRange);
     }
 
-    @Test
-    void testChoosePlayer() {
-        simpleGame.setInput("p2");
-        Card volcanic = new Volcanic(1, CardSuit.SPADE);
-        p1.getHand().add(volcanic);
-        p1.playFromHand(volcanic);
-        p1.playTurn();
 
-        List<Player> PlayerInRange = p1.getPlayersInRange(p1.getWeaponRange()); //recup les joueurs a porte
 
-        Player playerCibleDuVolcanic = p1.choosePlayer("Séléctionne ta cible", PlayerInRange, false); //choisis la cible
-        assertEquals(p2, playerCibleDuVolcanic);
-    }
-
-    @Test
-    void testVolcanicSimplifie() {
-        simpleGame.setInput("Bang!", "p2", "");
-        Card bang1 = new Bang(1, CardSuit.SPADE);
-        Card bang2 = new Bang(1, CardSuit.SPADE);
-        Card bang3 = new Bang(1, CardSuit.SPADE);
-
-        p1.getHand().add(bang1);
-        p1.getHand().add(bang2);
-        p1.getHand().add(bang3);
-        assertEquals(1, p1.getWeaponRange());
-        p1.playTurn();
-
-        assertEquals(3, p2.getHealthPoints());
-        assertTrue(discardPile.contains(bang1));
-        assertTrue(discardPile.contains(bang2));
-        assertTrue(discardPile.contains(bang3));
-    }
 
     @Test
     void testChoose() {
         simpleGame.setInput("Bang!", "p2");
-        List<String> choiceVolcanic = new ArrayList<>(); //choix de Bang! ou non
-        choiceVolcanic.add("Bang!");//
-        choiceVolcanic.add("");
+        List<String> choice = new ArrayList<>(); //choix de Bang! ou non
+        choice.add("Bang!");//
+        choice.add("");
+        Card bang = new Bang(1, CardSuit.SPADE);
+        p1.addToHand(bang);
 
         p1.playTurn();
-        String choixBang = p1.choose("Voulez vous jouer un Bang", choiceVolcanic, true, true);//je demande si le joueur veux Bang ou passer son tour
+        String choixBang = p1.choose("Voulez vous jouer un Bang", choice, true, true);//je demande si le joueur veux Bang ou passer son tour
         Player choixPlayer = p1.choosePlayer("Quel joueur selectionnez vous", p1.getOtherPlayers(), true);
 
         assertEquals("Bang!", choixBang);
