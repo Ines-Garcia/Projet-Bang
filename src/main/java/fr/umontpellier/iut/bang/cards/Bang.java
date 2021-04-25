@@ -20,13 +20,13 @@ public class Bang extends OrangeCard {
         Player playerCible = player.choosePlayer("Séléctionne ta cible", PlayerAPorte, false); //choisis la cible
         boolean esquiveJourdonnais = false; //initialisation du boolen d'esquive a false
 
-        if (playerCible.getBangCharacter().getName().equals("Jourdonnais")){ //si la cible est "Jourdonnais"
+        if (playerCible.getBangCharacter().getName().equals("Jourdonnais")) { //si la cible est "Jourdonnais"
             Card degainerJourdonnais = playerCible.randomDraw(); //dégaine une carte
-            if (degainerJourdonnais.getSuit() == CardSuit.HEART){ //si la carte degaine est un coeur
-                esquiveJourdonnais=true; //il esquive
+            if (degainerJourdonnais.getSuit() == CardSuit.HEART) { //si la carte degaine est un coeur
+                esquiveJourdonnais = true; //il esquive
             }
         }
-        if (!esquiveJourdonnais){ //si il n'esquive pas
+        if (!esquiveJourdonnais) { //si il n'esquive pas
             if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))) { //si la cible a un missed en main
                 List<String> choice = new ArrayList<>();
                 choice.add("Missed!");
@@ -51,18 +51,15 @@ public class Bang extends OrangeCard {
 
 
     public boolean canPlayFromHand(Player player) {
-        if (player.getGame().getCurrentPlayer()==player){ //si c'est le tour du joueur passé en parametre
-           if (player.getHand().contains(this)){ //si le joueur en parametre a la carte en main //pas besoin car playFromHand test deja si carte presente dans la main
-               if (player.getInPlay().contains(player.getCardInPlay("Volcanic"))){
-                   return true;
-               }
-               if (player.isBangDejaJoue()){
-                   return false;
-               }
-               return true;
-           }
-           return false;
+        if (player.getWeapon().getName().equals("Volcanic")){ //si le joueur a l'arme volcanic alors il peut jouer autant qu'il veut
+            return true;
+        }else { //si il n'a pas de volcanic
+            if (player.isBangDejaJoue()){ //si il a deja jouer un bang cf ligne 49
+                return false;
+            }else { //si il n'a pas jouer de bang ce tour
+            return true;
+            }
         }
-        return false;
     }
+
 }
