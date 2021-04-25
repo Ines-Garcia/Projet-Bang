@@ -24,7 +24,7 @@ public class CatBalou extends OrangeCard {
         for (BlueCard c : carteEnJeuCible){
             choice.add(c.getName());
         }
-        String choix = player.choose("Voulez vous prendre une carte dans la main du joueur, ou dans le inPlay ?",choice,true,false);
+        String choix = player.choose("Séléctionnez une carte, entrez \"\"  pour piocher dans la main:",choice,true,false);
         if (choix.equals("")){
            playerCible.discard(playerCible.removeRandomCardFromHand());
         }else{
