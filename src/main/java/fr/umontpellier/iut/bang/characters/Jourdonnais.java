@@ -6,4 +6,6 @@ public class Jourdonnais extends BangCharacter {
         super("Jourdonnais", 4);
     }
 
+    //FAIT TEST OK
+
 }

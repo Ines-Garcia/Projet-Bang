@@ -188,7 +188,7 @@ public class CharactersTest {
         assertTrue(p1.getHand().contains(beer));
     }
 
-    @Disabled
+
     @Test
     void testJoudonnaisDegaineCoeur() {
         makeGameWithCharacter(new Jourdonnais());
@@ -205,7 +205,7 @@ public class CharactersTest {
         assertTrue(discardPile.contains(coeur));
     }
 
-    @Disabled
+
     @Test
     void testJoudonnaisDegainePique() {
         makeGameWithCharacter(new Jourdonnais());
