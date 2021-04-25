@@ -315,7 +315,7 @@ public class CharactersTest {
         assertEquals(dynamite, discardPile.peek());
     }
 
-    @Disabled
+
     @Test
     void testRoseDoolan() {
         makeGameWithCharacter(new RoseDoolan());
