@@ -12,4 +12,5 @@ public class Mustang extends BlueCard {
         super.playedBy(player);
     }
 
+
 }

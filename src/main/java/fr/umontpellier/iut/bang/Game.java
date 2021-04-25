@@ -140,6 +140,10 @@ public class Game {
         return players;
     }
 
+    public Deque<Card> getDrawPile() {
+        return drawPile;
+    }
+
     /**
      * Lance la partie (exécute les tours des joueurs jusqu'à ce que la partie soit finie)
      */
