@@ -36,9 +36,9 @@ public class CatBalou extends OrangeCard {
         List<Player> playerRestant = player.getOtherPlayers(); //V2
         Player playerCible = player.choosePlayer("Sélectionne ta cible", playerRestant, false); //choisis la cible
         BlueCard chosie = player.chooseBlueCard("Séléctionnez une carte en jeu sinon appuyez sur entrer:",playerCible.getInPlay(),true,true);
-        if (chosie==null){
+        if (chosie==null){ //si carte en main
             playerCible.discard(playerCible.removeRandomCardFromHand());
-        }else {
+        }else { //si carte en jeu
             playerCible.removeFromInPlay(playerCible.getCardInPlay(chosie.getName()));
             playerCible.discard(chosie);
         }
