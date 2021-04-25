@@ -15,7 +15,7 @@ public class PedroRamirez extends BangCharacter {
     }
 
     public void onStartTurn(Player player) {
-        Game game = player.getGame();
+        /*Game game = player.getGame();
 
         List<String> topOfDiscardPile = new ArrayList<>();
         topOfDiscardPile.add(game.getTopOfDiscardPile().getName());
@@ -28,6 +28,6 @@ public class PedroRamirez extends BangCharacter {
         else{
             player.getHand().add(game.getTopOfDiscardPile());
         }
-            player.drawToHand();
+            player.drawToHand();*/
     }
 }

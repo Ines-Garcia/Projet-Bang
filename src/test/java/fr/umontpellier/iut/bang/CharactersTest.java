@@ -46,7 +46,7 @@ public class CharactersTest {
         }));
     }
 
-    @Disabled
+
     @Test
     void testBartCassidy() {
         makeGameWithCharacter(new BartCassidy());
