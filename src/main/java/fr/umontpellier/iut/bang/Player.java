@@ -77,6 +77,10 @@ public class Player {
         return game;
     }
 
+    public BangCharacter getBangCharacter() {
+        return bangCharacter;
+    }
+
     public void setGame(Game game) {
         this.game = game;
     }
@@ -248,9 +252,9 @@ public class Player {
             distanceBase-=1; //je le vois 1 plus pres //POURQUOI AVEC 2 ça passe ? => voir getPlayerDistance
         }else if(player.getInPlay().contains(player.getCardInPlay("Mustang"))){ //si il a un mustang
             distanceBase+=1; //je le vois 1 plus loin
-        }/*else if(personnage){
-            code modif des persos
-        }*/
+        }else if(player.getBangCharacter().getName().equals("Paul Regret")){ // Paul Regret voit 1 plus loin
+            distanceBase+=1;
+        }
         return distanceBase;
     }
 
