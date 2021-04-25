@@ -309,7 +309,7 @@ public class CharactersTest {
         drawPile.push(bang);
         drawPile.push(beer);
         p1.playTurn();
-        assertEquals(2, p1.getHand().size());
+        assertEquals(2, p1.getHand().size());//il ne detecte que Bang! dans sa main... (le expected = 2 correspond a bang ET beer en main, mais lui ne renvoi que Bang!)
         assertTrue(p1.getHand().contains(bang));
         assertTrue(p1.getHand().contains(beer));
         assertEquals(dynamite, discardPile.peek());
