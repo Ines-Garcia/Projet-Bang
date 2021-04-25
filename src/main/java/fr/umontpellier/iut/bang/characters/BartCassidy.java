@@ -6,4 +6,6 @@ public class BartCassidy extends BangCharacter {
         super("Bart Cassidy", 4);
     }
 
+    //FAIT TEST OK
+
 }

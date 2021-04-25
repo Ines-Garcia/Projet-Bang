@@ -223,6 +223,9 @@ public class Player {
      *                 responsable (p.ex. Dynamite)
      */
     public void decrementHealth(int n, Player attacker) {
+        if (this.getBangCharacter().getName().equals("Bart Cassidy")){
+            this.drawToHand();
+        }
         if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;
         }
@@ -254,6 +257,8 @@ public class Player {
             distanceBase+=1; //je le vois 1 plus loin
         }else if(player.getBangCharacter().getName().equals("Paul Regret")){ // Paul Regret voit 1 plus loin
             distanceBase+=1;
+        }else if(this.getBangCharacter().getName().equals("Rose Doolan")){ //Rose Doolan voit 1 plus pres
+            distanceBase-=1; //je le vois 1 plus loin
         }
         return distanceBase;
     }

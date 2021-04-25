@@ -6,4 +6,6 @@ public class RoseDoolan extends BangCharacter {
         super("Rose Doolan", 4);
     }
 
+    //FAIT TEST OK
+
 }
