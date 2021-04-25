@@ -223,6 +223,9 @@ public class Player {
      *                 responsable (p.ex. Dynamite)
      */
     public void decrementHealth(int n, Player attacker) {
+        if (this.getBangCharacter().getName().equals("Bart Cassidy")){
+            this.drawToHand();
+        }
         if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;
         }
