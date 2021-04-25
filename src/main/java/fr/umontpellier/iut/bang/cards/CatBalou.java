@@ -15,18 +15,22 @@ public class CatBalou extends OrangeCard {
         super.playedBy(player);
 
         List<Player> playerRestant = player.getOtherPlayers();
-        List<String> mainOuInPlay = new ArrayList<>();
-        mainOuInPlay.add("");
-        mainOuInPlay.add("InPlay");
+        List<String> choice = new ArrayList<>();
+        choice.add("");
+
 
         Player playerCible = player.choosePlayer("Sélectionne ta cible", playerRestant, false); //choisis la cible
-        String choix = player.choose("Voulez vous prendre une carte dans la main du joueur, ou dans le inPlay ?",mainOuInPlay,true,false);
+        List<BlueCard> carteEnJeuCible = playerCible.getInPlay();
+        for (BlueCard c : carteEnJeuCible){
+            choice.add(c.getName());
+        }
+        String choix = player.choose("Voulez vous prendre une carte dans la main du joueur, ou dans le inPlay ?",choice,true,false);
         if (choix.equals("")){
-           player.discard(playerCible.removeRandomCardFromHand());
+           playerCible.discard(playerCible.removeRandomCardFromHand());
         }else{
-            List<BlueCard> cartesEnJeu = player.getInPlay();
-            Card cardPicked = playerCible.chooseBlueCard("Séléctionne la carte",cartesEnJeu, true, false);
-            playerCible.discardFromHand(cardPicked); //defausse la carte de la main du joueur
+            BlueCard carteAenlever = playerCible.getCardInPlay(choix);
+            playerCible.removeFromInPlay(playerCible.getCardInPlay(choix));
+            playerCible.discard(carteAenlever);
         }
     }
 }
