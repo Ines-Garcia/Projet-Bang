@@ -6,4 +6,5 @@ public class PaulRegret extends BangCharacter {
         super("Paul Regret", 3);
     }
 
+    //FAIT TEST OK
 }
