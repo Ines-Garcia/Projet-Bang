@@ -5,5 +5,5 @@ public class SlabTheKiller extends BangCharacter {
     public SlabTheKiller() {
         super("Slab the Killer", 4);
     }
-
+//OK TEST FAIT
 }

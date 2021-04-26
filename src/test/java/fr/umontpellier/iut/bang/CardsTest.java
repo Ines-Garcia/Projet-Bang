@@ -573,8 +573,6 @@ public class CardsTest {
         assertEquals(playerListExpected, PlayerInRange);
     }
 
-
-
     @Disabled
     @Test
     void testChoose() {
@@ -594,5 +592,4 @@ public class CardsTest {
     }
 
 
-
-}
+    }
