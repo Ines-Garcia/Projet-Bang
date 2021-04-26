@@ -236,9 +236,6 @@ public class Player {
         if (this.getBangCharacter().getName().equals("Bart Cassidy")){
             this.drawToHand();
         }
-        if (this.getBangCharacter().getName().equals("El Gringo")){
-
-        }
         if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;
         }
