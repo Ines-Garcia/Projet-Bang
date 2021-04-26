@@ -97,6 +97,14 @@ public class Player {
         return weapon;
     }
 
+    public String getWeaponName(){
+        if (getWeapon()==null){
+            return ""; // en gros il a un colt 45 (arme de base)
+        }else {
+            return weapon.getName();
+        }
+    }
+
     public List<Card> getAllCards(){ //RETOURNE UNE LIST DE TOUTES LES CARTES DU JOUEUR
         List<Card> playerAllCards = new ArrayList<>(); //crée une liste de toutes les cartes
         playerAllCards.addAll(this.getInPlay()); //ajoute les cartes en jeu
@@ -110,7 +118,7 @@ public class Player {
      * @return la portée de l'arme équipée (1 si aucune arme équipée)
      */
     public int getWeaponRange() {
-        if (weapon == null) {
+        if (weapon == null) { //si il a pas d'arme il a un colt 45
             return 1;
         }
         return weapon.getRange();

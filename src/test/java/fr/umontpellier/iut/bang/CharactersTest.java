@@ -295,8 +295,8 @@ public class CharactersTest {
         assertEquals(bang, drawPile.peek());
     }
 
-    @Disabled
-    @Test  //PROBLEME CANPLAYFROMHAND BANG
+
+    @Test
     void testPedroRamirezNePiochePasDansLaDefausse() {
         makeGameWithCharacter(new PedroRamirez());
         assertEquals(4, p1.getHealthPointsMax());
