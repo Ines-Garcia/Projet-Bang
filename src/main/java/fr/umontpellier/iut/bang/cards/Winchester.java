@@ -17,5 +17,6 @@ public class Winchester extends WeaponCard {
         super.playedBy(player);
         player.setWeapon(this);
 
+
     }
 }

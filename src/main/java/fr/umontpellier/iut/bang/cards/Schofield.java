@@ -17,5 +17,6 @@ public class Schofield extends WeaponCard {
         super.playedBy(player);
         player.setWeapon(this);
 
+
     }
 }

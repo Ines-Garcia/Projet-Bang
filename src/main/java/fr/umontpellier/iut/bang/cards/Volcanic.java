@@ -14,5 +14,6 @@ public class Volcanic extends WeaponCard {
     public void playedBy(Player player) {
         super.playedBy(player);
         player.setWeapon(this);
+
     }
 }

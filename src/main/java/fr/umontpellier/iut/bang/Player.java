@@ -179,8 +179,10 @@ public class Player {
             this.discard(this.weapon); //l'arme courante en main est jeté dans la fausse
             //this.weapon=null; //si besoin d'enlever une arme alors p.setWeapon(null)
             this.weapon=weapon; //set la nouvelle arme en tant que courante
+            addToInPlay(weapon);
         }else { //si j'ai pas d'arme
             this.weapon=weapon;
+            addToInPlay(weapon);
         }
     }
 
