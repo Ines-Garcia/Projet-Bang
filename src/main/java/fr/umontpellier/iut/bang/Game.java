@@ -55,6 +55,9 @@ public class Game {
      */
     private Scanner scanner;
 
+    public boolean isFinished() {
+        return finished;
+    }
 
     /**
      * Constructeur de la classe
@@ -156,6 +159,15 @@ public class Game {
         }
 
         while (!finished) {
+            /** SUZY
+            for (Player player : players){
+                if (player.getBangCharacter().getName().equals("Suzy Lafayette")){
+                    if (player.getHand().isEmpty()){
+                        player.drawCard();
+                    }
+                }
+            }
+            */
             currentPlayer.playTurn();   // jouer le tour du joueur courant
             int index = players.indexOf(currentPlayer);
             index += 1;
