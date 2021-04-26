@@ -15,17 +15,13 @@ public class JesseJones extends BangCharacter {
 
     @Override
     public void onStartTurn(Player player) {
-        /*player.drawToHand();
-        List<String> choix = new ArrayList<>();
-        choix.add("p2");
-        choix.add("");
-        if (player.choose("voulez vous tirer dans la main d'un joueur", choix, false, false).equals("")) {
+        List<Player> joueurs = player.getOtherPlayers();
+        Player joueurChoisi = player.choosePlayer("Choisisez le joueur a qui vous voulez prendre une carte, appuyez sur enter sinon",joueurs,true);
+        if (joueurChoisi==null){ //si il ne pioche pas dans la main d'un joueur
             player.drawToHand();
-        } else {
-            List<Player> joueurs = player.getOtherPlayers();
-            Player cible = player.choosePlayer("A qui voulez vous prendre une carte", joueurs, false);
-            Card h = cible.removeRandomCardFromHand();  //enlève la carte de la main de la cible
-            player.addToHand(h); // l'ajoute à la main du player
-        }*/
+        }else { //si il pioche dans la main d'un joueur
+            player.addToHand(joueurChoisi.removeRandomCardFromHand());
+        }
+        player.drawToHand();
     }
 }
