@@ -15,19 +15,20 @@ public class PedroRamirez extends BangCharacter {
     }
 
     public void onStartTurn(Player player) {
-        /*Game game = player.getGame();
+        Game game = player.getGame();
 
-        List<String> topOfDiscardPile = new ArrayList<>();
-        topOfDiscardPile.add(game.getTopOfDiscardPile().getName());
+        List<Card> topOfDiscardPile = new ArrayList<>();
+        topOfDiscardPile.add(game.getTopOfDiscardPile());
 
-        String choix = player.choose("Voulez-vous choisir la première carte de la pile défausse", topOfDiscardPile,true,  true);
+        Card choix = player.chooseCard("Voulez-vous choisir la première carte de la pile défausse", topOfDiscardPile,true,  true);
 
-        if(choix.equals("")){
-            player.drawCard();
+        if(choix==game.getTopOfDiscardPile()){
+            player.getHand().add(choix);
+
         }
         else{
-            player.getHand().add(game.getTopOfDiscardPile());
+            player.drawToHand();
         }
-            player.drawToHand();*/
+            player.drawToHand();
     }
 }
