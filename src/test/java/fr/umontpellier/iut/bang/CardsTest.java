@@ -590,6 +590,4 @@ public class CardsTest {
         assertEquals("Bang!", choixBang);
         assertEquals(p2, choixPlayer);
     }
-
-
     }

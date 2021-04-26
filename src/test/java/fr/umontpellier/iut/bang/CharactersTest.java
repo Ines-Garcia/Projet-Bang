@@ -327,7 +327,7 @@ public class CharactersTest {
         assertFalse(p3.getPlayersInRange(1).contains(p1));
     }
 
-    @Disabled
+
     @Test
     void testSlabTheKiller() {
         makeGameWithCharacter(new SlabTheKiller());
@@ -345,6 +345,43 @@ public class CharactersTest {
         assertTrue(discardPile.contains(bang));
         assertTrue(discardPile.contains(missed1));
         assertTrue(discardPile.contains(missed2));
+        assertTrue(p2.getHand().isEmpty());
+    }
+
+    @Test
+    void testSlabTheKillerQunSeulMissed() {
+        makeGameWithCharacter(new SlabTheKiller());
+        assertEquals(4, p1.getHealthPointsMax());
+        game.setInput("p2", "");
+        Card bang = new Bang(1, CardSuit.HEART);
+        Card missed1 = new Missed(1, CardSuit.HEART);
+
+        p1.getHand().add(bang);
+        p2.getHand().add(missed1);
+        p1.playFromHand(bang);
+        assertEquals(3, p2.getHealthPoints());
+        assertTrue(discardPile.contains(bang));
+    }
+
+    @Test
+    void testSlabTheKillerMissedEtBarrel() {
+        makeGameWithCharacter(new SlabTheKiller());
+        assertEquals(4, p1.getHealthPointsMax());
+        game.setInput("p2", "Missed!", "Barrel");
+        Card bang = new Bang(1, CardSuit.HEART);
+        Card beer = new Bang(1, CardSuit.HEART);
+        Card missed1 = new Missed(1, CardSuit.HEART);
+        Card barrel = new Barrel(1, CardSuit.HEART);
+
+        drawPile.push(beer);
+        p1.getHand().add(bang);
+        p2.getHand().add(missed1);
+        p2.getHand().add(barrel);
+        p1.playFromHand(bang);
+        assertEquals(4, p2.getHealthPoints());
+        assertTrue(discardPile.contains(bang));
+        assertTrue(discardPile.contains(missed1));
+        assertTrue(discardPile.contains(barrel));
         assertTrue(p2.getHand().isEmpty());
     }
 
