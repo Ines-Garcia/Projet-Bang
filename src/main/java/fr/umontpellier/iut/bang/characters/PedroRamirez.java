@@ -17,17 +17,23 @@ public class PedroRamirez extends BangCharacter {
     public void onStartTurn(Player player) {
         Game game = player.getGame();
 
-        List<Card> topOfDiscardPile = new ArrayList<>();
-        topOfDiscardPile.add(game.getTopOfDiscardPile());
+        if (game.getDiscardPile().isEmpty()){ //si la defausse est vide (ex début de partie)
+            player.drawToHand();
+            player.drawToHand();
+        }else {
+            List<Card> topOfDiscardPile = new ArrayList<>();
+            topOfDiscardPile.add(game.getTopOfDiscardPile());
 
-        Card choix = player.chooseCard("Voulez-vous choisir la première carte de la pile défausse", topOfDiscardPile,true,  true);
+            Card choix = player.chooseCard("Voulez-vous choisir la première carte de la pile défausse", topOfDiscardPile,true,  true);
 
-        if(choix==game.getTopOfDiscardPile()){
-            player.getHand().add(choix);
-        }
-        else{
+            if(choix==game.getTopOfDiscardPile()){
+                player.getHand().add(choix);
+            }
+            else{
+                player.drawToHand();
+            }
             player.drawToHand();
         }
-        player.drawToHand();
+
     }
 }
