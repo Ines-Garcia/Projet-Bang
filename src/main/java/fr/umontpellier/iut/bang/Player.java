@@ -383,8 +383,27 @@ public class Player {
 
             return choisie;
 
+        }
+        return bangCharacter.randomDraw(this); */
+
+        /*if (this.getBangCharacter().getName().equals("Lucky Duke")){ //V2 Lucky Duke (voir test)
+            ArrayList<Card> choiceCard = new ArrayList<>();
+            for (int i = 0 ; i < 2 ; i++){
+                choiceCard.add(this.drawCard());
+            }
+
+            Card choisie = this.chooseCard("Séléctionnez la carte que vous préférez:",choiceCard,true,false);
+
+
+            for (int i = 0 ; i < 2 ; i++){
+                discard(choiceCard.get(i));
+            }
+
+            return choisie;
+
         }*/
         return bangCharacter.randomDraw(this);
+
     }
 
     /**
