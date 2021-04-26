@@ -17,7 +17,5 @@ public class Remington extends WeaponCard {
     @Override
     public void playedBy(Player player) {
         super.playedBy(player);
-        player.setWeapon(this);
-
     }
 }
