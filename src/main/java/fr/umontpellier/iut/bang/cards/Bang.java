@@ -30,7 +30,7 @@ public class Bang extends OrangeCard {
             if (player.getBangCharacter().getName().equals("Slab the Killer")) {
                 int compteurDeMissed = 0;
                 for (Card c : playerCible.getHand()) {
-                    if (c.getName().equals("Missed!")) {
+                    if (c.getName().equals("Missed!")||c.getName().equals("Barrel")) {
                         compteurDeMissed++;
                     }
                 }
@@ -40,18 +40,35 @@ public class Bang extends OrangeCard {
 
                     List<String> choice = new ArrayList<>();
                     choice.add("Missed!");
+                    choice.add("Barrel");
                     choice.add("");
 
                     while (nbDeMissedUtilise != 2 && !missedNonUtilise) {
-                        if (playerCible.choose("Voulez vous jouer un Missed", choice, true, true) == null) { //demande au joueur cible si il veut jouer sa carte miss
-                            playerCible.decrementHealth(1, player); // si il ne veut pas utiliser un missed
+                        String choix = playerCible.choose("Voulez vous jouer un Missed", choice, true, true);
+                        if (choix.equals("")) { //si il veux rien utilisé
+                            playerCible.decrementHealth(1, player);
                             missedNonUtilise = true;
-                        } else { //si il utilise un missed
-                            playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
-                            nbDeMissedUtilise++;
+                        } else { //si il utilise un missed OU un Barrel
+                            if (choix.equals("Missed!")) {
+                                playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
+                                nbDeMissedUtilise++;
+                            }
+                            if(choix.equals("Barrel")) {
+                                Card degainer = playerCible.randomDraw(); //dégaine une carte
+                                if (degainer.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
+                                    playerCible.decrementHealth(1, player); //met a jours les pv
+                                    missedNonUtilise=true;
+                                }
+                                playerCible.discardFromHand(playerCible.getCardInHand("Barrel"));
+                                nbDeMissedUtilise++;
+                            }
                         }
                     }
                 }
+                else {
+                    playerCible.decrementHealth(1, player); //met a jours les pv
+                }
+
             } else if (!player.getBangCharacter().getName().equals("Slab the Killer")) {
                 if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))) { //si la cible a un missed en main
                     List<String> choice = new ArrayList<>();
