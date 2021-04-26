@@ -27,23 +27,50 @@ public class Bang extends OrangeCard {
             }
         }
         if (!esquiveJourdonnais) { //si il n'esquive pas
-            if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))) { //si la cible a un missed en main
-                List<String> choice = new ArrayList<>();
-                choice.add("Missed!");
-                choice.add("");
-                if (playerCible.choose("Voulez vous jouer un Missed", choice, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
-                    playerCible.decrementHealth(1, player); // si il ne veut pas utiliser un missed
-                } else { //si il utilise un missed
-                    playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
+            if (player.getBangCharacter().getName().equals("Slab the Killer")) {
+                int compteurDeMissed = 0;
+                for (Card c : playerCible.getHand()) {
+                    if (c.getName().equals("Missed!")) {
+                        compteurDeMissed++;
+                    }
                 }
-            } else if (playerCible.getInPlay().contains(playerCible.getCardInPlay("Barrel"))) { //si la cible a un barrel sur le terrain
-                Card degainer = playerCible.randomDraw(); //dégaine une carte
-                if (degainer.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
+                if (compteurDeMissed >= 2) { //si la cible a 2 missed en main ou plus
+                    int nbDeMissedUtilise = 0;
+                    boolean missedNonUtilise = false;
+
+                    List<String> choice = new ArrayList<>();
+                    choice.add("Missed!");
+                    choice.add("");
+
+                    while (nbDeMissedUtilise != 2 && !missedNonUtilise) {
+                        if (playerCible.choose("Voulez vous jouer un Missed", choice, true, true) == null) { //demande au joueur cible si il veut jouer sa carte miss
+                            playerCible.decrementHealth(1, player); // si il ne veut pas utiliser un missed
+                            missedNonUtilise = true;
+                        } else { //si il utilise un missed
+                            playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
+                            nbDeMissedUtilise++;
+                        }
+                    }
+                }
+            } else if (!player.getBangCharacter().getName().equals("Slab the Killer")) {
+                if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))) { //si la cible a un missed en main
+                    List<String> choice = new ArrayList<>();
+                    choice.add("Missed!");
+                    choice.add("");
+                    if (playerCible.choose("Voulez vous jouer un Missed", choice, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
+                        playerCible.decrementHealth(1, player); // si il ne veut pas utiliser un missed
+                    } else { //si il utilise un missed
+                        playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
+                    }
+                } else if (playerCible.getInPlay().contains(playerCible.getCardInPlay("Barrel"))) { //si la cible a un barrel sur le terrain
+                    Card degainer = playerCible.randomDraw(); //dégaine une carte
+                    if (degainer.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
+                        playerCible.decrementHealth(1, player); //met a jours les pv
+                    }
+                    playerCible.removeFromInPlay(playerCible.getCardInPlay("Barrel"));
+                } else { //si la cible n'as ni de barrel ni de missed
                     playerCible.decrementHealth(1, player); //met a jours les pv
                 }
-                playerCible.removeFromInPlay(playerCible.getCardInPlay("Barrel"));
-            } else { //si la cible n'as ni de barrel ni de missed
-                playerCible.decrementHealth(1, player); //met a jours les pv
             }
         }
         player.setBangDejaJoue(true); //Sert au Volcanic et a Willy The Kid
