@@ -621,18 +621,17 @@ public class Player {
                 if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
                     this.decrementHealth(3, this); //la dynamite explose
                     this.discard(this.getCardInPlay("Dynamite"));
-                    this.inPlay.remove(this.getCardInPlay("Dynamite")); //POURQUOI IL FAUT LES 2
-                    this.removeFromInPlay(this.getCardInPlay("Dynamite")); //POURQUOI IL FAUT LES 2
+
+                    this.removeFromInPlay(this.getCardInPlay("Dynamite"));
                 } else {
                     getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
-                    this.inPlay.remove(this.getCardInPlay("Dynamite")); //POURQUOI IL FAUT LES 2
-                    this.removeFromInPlay(this.getCardInPlay("Dynamite")); //POURQUOI IL FAUT LES 2
 
-                } // ELLE VEUT PAS TOURNER CETTE P**IN DE DYNAMITE
+                    this.removeFromInPlay(this.getCardInPlay("Dynamite"));
+
+                }
             } else {
                 this.getOtherPlayers().get(1).addToInPlay(getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
-                this.inPlay.remove(this.getCardInPlay("Dynamite")); //POURQUOI JE PEUX METTRE UN DES DEUX
-                this.removeFromInPlay(this.getCardInPlay("Dynamite")); //POURQUOI JE PEUX METTRE UN DES DEUX
+                this.removeFromInPlay(this.getCardInPlay("Dynamite"));
             }
         }
 
