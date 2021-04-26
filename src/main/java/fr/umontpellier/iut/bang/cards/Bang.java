@@ -51,13 +51,17 @@ public class Bang extends OrangeCard {
 
 
     public boolean canPlayFromHand(Player player) {
-        if (player.getWeapon().getName().equals("Volcanic")){ //si le joueur a l'arme volcanic alors il peut jouer autant qu'il veut
+        if (player.getBangCharacter().getName().equals("Willy the Kid")){ // si c'est willy the kid il peut jouer autant de bang qu'il veut
             return true;
-        }else { //si il n'a pas de volcanic
+        }       //SI WILLY OU VOLCANIC DANS LE  MEME IF MARCHE PAS
+        if (player.getWeapon().getName().equals("Volcanic")){ //si le joueur a l'arme volcanic alors il peut jouer autant de bang qu'il veut
+            return true;
+        }
+        else { //si il n'a pas de volcanic et que ce n'est pas Willy the Kid
             if (player.isBangDejaJoue()){ //si il a deja jouer un bang cf ligne 49
                 return false;
             }else { //si il n'a pas jouer de bang ce tour
-            return true;
+                return true;
             }
         }
     }

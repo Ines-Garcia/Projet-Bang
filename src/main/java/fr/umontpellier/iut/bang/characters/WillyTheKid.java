@@ -6,4 +6,5 @@ public class WillyTheKid extends BangCharacter {
         super("Willy the Kid", 4);
     }
 
+    //FAIT TEST OK
 }

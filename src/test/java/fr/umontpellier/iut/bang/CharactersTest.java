@@ -275,7 +275,7 @@ public class CharactersTest {
         assertTrue(p1.getPlayersInRange(1).contains(p2));
     }
 
-    @Disabled
+
     @Test
     void testPedroRamirezPiocheDansLaDefausse() {
         makeGameWithCharacter(new PedroRamirez());
@@ -296,7 +296,7 @@ public class CharactersTest {
     }
 
     @Disabled
-    @Test
+    @Test  //PROBLEME CANPLAYFROMHAND BANG
     void testPedroRamirezNePiochePasDansLaDefausse() {
         makeGameWithCharacter(new PedroRamirez());
         assertEquals(4, p1.getHealthPointsMax());
@@ -385,7 +385,7 @@ public class CharactersTest {
         assertTrue(p1.getHand().contains(scope));
     }
 
-    @Disabled
+
     @Test
     void testWillyTheKid() {
         makeGameWithCharacter(new WillyTheKid());

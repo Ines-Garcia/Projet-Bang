@@ -24,11 +24,10 @@ public class PedroRamirez extends BangCharacter {
 
         if(choix==game.getTopOfDiscardPile()){
             player.getHand().add(choix);
-
         }
         else{
             player.drawToHand();
         }
-            player.drawToHand();
+        player.drawToHand();
     }
 }
