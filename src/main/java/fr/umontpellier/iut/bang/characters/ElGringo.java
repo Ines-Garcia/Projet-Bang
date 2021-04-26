@@ -6,4 +6,5 @@ public class ElGringo extends BangCharacter {
         super("El Gringo", 3);
     }
 
+    //TEST OK
 }
