@@ -19,7 +19,7 @@ public class Beer extends OrangeCard {
     }
 
     public boolean canPlayFromHand(Player player) {
-        if (player.getOtherPlayers().size() < 3) { //si ya plus de 2 joueurs
+        if (player.getOtherPlayers().size() > 2) { //si ya plus de 2 joueurs
             return true;
         } else {
             return false;
