@@ -177,7 +177,7 @@ public class Player {
     public void setWeapon(WeaponCard weapon) {
         if (this.getWeapon()!=null){ // si j'ai une arme
             this.discard(this.weapon); //l'arme courante en main est jeté dans la fausse
-            //this.weapon=null; //si besoin d'enlever une arme alors p.setWeapon(null)
+            this.removeFromInPlay(this.weapon); //enleve l'arme du inplay
             this.weapon=weapon; //set la nouvelle arme en tant que courante
             addToInPlay(weapon);
         }else { //si j'ai pas d'arme
