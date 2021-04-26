@@ -59,4 +59,15 @@ class GameTest {
         assertEquals(listPlayerAttendu, p1.getOtherPlayers());
 
     }
+
+    @Test
+    void testgetOtherPlayerOrdredifférent(){
+        List<Player> listPlayerAttendu = new ArrayList<>();
+        listPlayerAttendu.add(p3);
+        listPlayerAttendu.add(p4);
+        listPlayerAttendu.add(p5);
+        listPlayerAttendu.add(p1);
+        listPlayerAttendu.add(p2);
+        assertEquals(listPlayerAttendu, p3.getOtherPlayers());
+    }
 }

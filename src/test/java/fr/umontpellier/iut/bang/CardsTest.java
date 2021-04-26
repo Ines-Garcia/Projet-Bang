@@ -247,7 +247,6 @@ public class CardsTest {
         assertEquals(4, p5.getHealthPoints());  // rmq: le Shériff a 5 PV max
     }
 
-    @Disabled
     @Test
     void testGeneralStore() {
         simpleGame.setInput("Bang!", "Bang!", "Missed!");
@@ -257,6 +256,8 @@ public class CardsTest {
         Card missed = new Missed(1, CardSuit.SPADE);
         Card beer1 = new Beer(1, CardSuit.SPADE);
         Card beer2 = new Beer(1, CardSuit.SPADE);
+        System.out.println(simpleGame.getPlayers());
+        System.out.println(p3.getOtherPlayers());
 
         drawPile.push(bang1);
         drawPile.push(beer1);

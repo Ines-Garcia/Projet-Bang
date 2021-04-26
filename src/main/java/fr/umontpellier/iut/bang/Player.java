@@ -141,7 +141,20 @@ public class Player {
      */
     public List<Player> getOtherPlayers() {
         List<Player> player = game.getPlayers();
-        return player;
+        List<Player> playerordre = new ArrayList<>();
+        if(player.indexOf(this)==0) {
+            playerordre=player;
+        }
+        else {
+            for (int i=player.indexOf(this);i< player.size();i++){
+                playerordre.add(player.get(i));
+            }
+            for (int j=0;j<player.indexOf(this);j++){
+                playerordre.add(player.get(j));
+            }
+
+        }
+        return playerordre;
     }
 
     /**

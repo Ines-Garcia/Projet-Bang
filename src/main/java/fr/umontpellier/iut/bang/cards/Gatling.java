@@ -22,7 +22,7 @@ public class Gatling extends OrangeCard {
         for (Player p : joueurs){
             if (p!=player){
                 if (p.getHand().contains(p.getCardInHand("Missed!"))) {
-                    if (p.choose("Voulez vous utiliser un Missed ? ", choice, false, true).equals("")) { //demande si le joueur veux perdre un point de vie
+                    if (p.choose("Voulez vous utiliser un Missed! ? ", choice, false, true).equals("")) { //demande si le joueur veux perdre un point de vie
                         p.decrementHealth(1, player);
 
                     } else {
