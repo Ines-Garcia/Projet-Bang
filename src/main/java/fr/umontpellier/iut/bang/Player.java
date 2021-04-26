@@ -368,12 +368,21 @@ public class Player {
      */
     public Card randomDraw() {
         /*if (this.getBangCharacter().getName().equals("Lucky Duke")){ //V1 Lucky Duke
-            ArrayList<Card> cardpossible = new ArrayList<>();
-            for (int i=0; i<2; i++){
-               cardpossible.add(this.getGame().getDrawPile().getLast()); //marche pas il faut récuperer les deux dernieres cartes
-            }
-            Card chosie = this.chooseCard("Séléctionnez une carte:",cardpossible,true,false);
-            this.addToHand(chosie);
+           Card premiereCarte=this.getGame().getDrawPile().pollLast();
+           Card deuxiemeCarte=this.getGame().getDrawPile().pollLast();
+
+           ArrayList<Card> choiceCard = new ArrayList<>();
+           choiceCard.add(premiereCarte);
+           choiceCard.add(deuxiemeCarte);
+
+            Card choisie = this.chooseCard("Séléctionnez la carte que vous préférez:",choiceCard,true,false);
+
+
+            discard(premiereCarte);
+            discard(deuxiemeCarte);
+
+            return choisie;
+
         }*/
         return bangCharacter.randomDraw(this);
     }
