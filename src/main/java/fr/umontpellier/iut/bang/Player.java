@@ -364,6 +364,14 @@ public class Player {
      * @return la carte qui a été dégainée
      */
     public Card randomDraw() {
+        /*if (this.getBangCharacter().getName().equals("Lucky Duke")){ //V1 Lucky Duke
+            ArrayList<Card> cardpossible = new ArrayList<>();
+            for (int i=0; i<2; i++){
+               cardpossible.add(this.getGame().getDrawPile().getLast()); //marche pas il faut récuperer les deux dernieres cartes
+            }
+            Card chosie = this.chooseCard("Séléctionnez une carte:",cardpossible,true,false);
+            this.addToHand(chosie);
+        }*/
         return bangCharacter.randomDraw(this);
     }
 
