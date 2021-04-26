@@ -236,6 +236,9 @@ public class Player {
         if (this.getBangCharacter().getName().equals("Bart Cassidy")){
             this.drawToHand();
         }
+        if (this.getBangCharacter().getName().equals("El Gringo")){
+
+        }
         if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;
         }
@@ -619,7 +622,7 @@ public class Player {
             Card cartedaigner = randomDraw();
             if (cartedaigner.getSuit() == CardSuit.SPADE) { //si la carte degainer est un pique
                 if (cartedaigner.getValue() >= 2 && cartedaigner.getValue() <= 9) {
-                    this.decrementHealth(3, this); //la dynamite explose
+                    this.decrementHealth(3, null); //la dynamite explose
                     this.discard(this.getCardInPlay("Dynamite"));
 
                     this.removeFromInPlay(this.getCardInPlay("Dynamite"));
