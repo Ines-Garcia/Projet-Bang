@@ -152,6 +152,18 @@ public class Game {
     }
 
     /**
+     * retourne vrai si Vulture Sam est dans la partie et vivant
+     */
+    public boolean vultureSamLaEtVivant() {
+        for (Player p : players){
+            if (p.getBangCharacter().getName().equals("Vulture Sam")){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * retourne le joueur qui joue Suzy Lafayette si elle exsite, null sinon
      */
     public Player getSuzyLafayette() {

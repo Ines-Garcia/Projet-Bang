@@ -264,14 +264,14 @@ public class Player {
                 }else {
                     healthPoints=0;
                     game.getPlayers().remove(this);
-
-                    /*for (Card carte : this.getHand()){
-                        this.getGame().getVultureSam().addToHand(carte);
+                    if (game.vultureSamLaEtVivant()){ //si Vulture Sam est vivant et qu'il est dans la partie
+                        for (Card carte : this.getHand()){
+                            this.getGame().getVultureSam().addToHand(carte);
+                        }
+                        for (Card carte2 : this.getInPlay()){
+                            this.getGame().getVultureSam().addToHand(carte2);
+                        }
                     }
-                    for (Card carte2 : this.getInPlay()){
-                        this.getGame().getVultureSam().addToHand(carte2);
-                    }*/
-
                 }
             }
         }
