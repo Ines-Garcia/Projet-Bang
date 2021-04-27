@@ -646,6 +646,9 @@ public class Player {
      * @param card carte à retirer de la liste
      */
     public void removeFromInPlay(BlueCard card) {
+        if (card==weapon){
+            this.weapon=null;
+        }
         inPlay.remove(card);
     }
 
