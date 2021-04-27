@@ -255,15 +255,16 @@ public class Player {
         if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;
         }
-        if (this.getHealthPoints()-n<0){ //si mort apres degats
-            while (isDead()){ //tant que le joueur est mort, rajouter une condition si bierre en main?
-                BlueCard Biere = getCardInPlay("Beer");
-                if (Biere != null){
+        if (this.getHealthPoints()-n<=0){ //si mort apres degats //modif inferieur ou EGAL a 0
+            boolean mort = false;
+            while (this.getHealthPoints()-n<=0 && !mort){ //tant que le joueur est mort, rajouter une condition si bierre en main?
+                if (this.getHand().contains(this.getCardInHand("Beer"))){
                     incrementHealth(1);
-                    discardFromHand(Biere);  //removeFromHand?
+                    discardFromHand(this.getCardInHand("Beer"));  //removeFromHand?
                 }else {
                     healthPoints=0;
                     game.getPlayers().remove(this);
+                    mort = true;
                     if (game.vultureSamLaEtVivant()){ //si Vulture Sam est vivant et qu'il est dans la partie
                         for (Card carte : this.getHand()){ //pour toute les cartes de la main du joueur mort
                             this.getGame().getVultureSam().addToHand(carte); //je les ajoutes dans la main de Sam

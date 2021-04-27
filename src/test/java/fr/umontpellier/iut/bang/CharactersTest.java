@@ -400,7 +400,7 @@ public class CharactersTest {
         assertTrue(p1.getHand().contains(beer));
     }
 
-    @Disabled
+
     @Test
     void testVultureSam() {
         makeGameWithCharacter(new VultureSam());
@@ -413,7 +413,7 @@ public class CharactersTest {
         p2.getHand().add(duel);
         p2.getHand().add(scope);
         p2.playFromHand(scope);
-        p2.decrementHealth(3, null);
+        p2.decrementHealth(4, null);
         p3.getHand().add(bang);
         p3.playFromHand(bang);
         assertEquals(2, p1.getHand().size());
