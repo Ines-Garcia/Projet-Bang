@@ -1,7 +1,6 @@
 package fr.umontpellier.iut.bang.cards;
 
 import fr.umontpellier.iut.bang.Player;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +13,10 @@ public class Jail extends BlueCard {
         super.playedBy(player);
         player.removeFromInPlay(this);
         List<Player> playerRestant = player.getOtherPlayers();
+
+        //enlever le shérif de playerRestant
+
         Player playerCible = player.choosePlayer("Séléctionne ta cible", playerRestant, false); //choisis la cible
         playerCible.addToInPlay(this);
     }
-
 }

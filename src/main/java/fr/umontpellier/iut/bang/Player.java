@@ -677,9 +677,11 @@ public class Player {
             Card cartedaigner = randomDraw();
             if (cartedaigner.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
                 discardFromInPlay(getCardInPlay("Jail")); //je defausse la carte
+                removeFromInPlay(getCardInPlay("Jail")); // je l'enlève du InPlay
                 prison = true; //je suis en prison donc je passe mon tour
             } else {
                 discardFromInPlay(getCardInPlay("Jail")); //je defausse la prison mais je peux jouer mon tour
+                removeFromInPlay(getCardInPlay("Jail")); // je l'enlève du InPlay
             }
         }
 
