@@ -17,6 +17,7 @@ public class Bang extends OrangeCard {
         super.playedBy(player);
 
         List<Player> PlayerAPorte = player.getPlayersInRange(player.getWeaponRange()); //recup les joueurs a porte
+        PlayerAPorte.remove(player);
         Player playerCible = player.choosePlayer("Séléctionne ta cible", PlayerAPorte, false); //choisis la cible
         boolean esquiveJourdonnais = false; //initialisation du boolen d'esquive a false
 
