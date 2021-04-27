@@ -264,6 +264,17 @@ public class Player {
                 }else {
                     healthPoints=0;
                     game.getPlayers().remove(this);
+                    /*for (Player player : game.getPlayers()){  //V1 Vulture Sam
+                        if (player.getBangCharacter().getName().equals("Vulture Sam")){
+                            //player.getHand().addAll(this.getAllCards());
+                            for (Card carte : this.getHand()){
+                                player.addToHand(carte);
+                            }
+                            for (Card carteBis : this.getInPlay()){
+                                player.addToHand(carteBis);
+                            }
+                        }
+                    }*/
                 }
             }
         }
