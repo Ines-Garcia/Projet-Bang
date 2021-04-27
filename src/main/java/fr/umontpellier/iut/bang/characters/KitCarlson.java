@@ -24,22 +24,12 @@ public class KitCarlson extends BangCharacter {
         choiceCard1.add(deuxiemeCarte);
         choiceCard1.add(troisiemeCarte);
 
-        Card carteChoisie1 = player.chooseCard("Quelle est la première carte que vous voulez prendre ?",choiceCard1,true,true);
-        if (carteChoisie1!=null){ //si il choisis une carte
-            player.addToHand(carteChoisie1);
-            choiceCard1.remove(carteChoisie1);
-            Card carteChoisie2 = player.chooseCard("Quelle est la deuxieme carte que vous voulez prendre ?",choiceCard1,true,true);
-            if (carteChoisie2!=null){ //si il choisis une carte
-                player.addToHand(carteChoisie2);
-                choiceCard1.remove(carteChoisie2);
-            }else { //il ne choisis qu'une carte, il remet les deux autres dans la draw pile
-                player.getGame().getDrawPile().addFirst(deuxiemeCarte);
-                player.getGame().getDrawPile().addFirst(troisiemeCarte);
-            }
-        }else { //il ne choisis aucune carte, il remet tout dans la draw pile
-            player.getGame().getDrawPile().addFirst(premiereCarte);
-            player.getGame().getDrawPile().addFirst(deuxiemeCarte);
-            player.getGame().getDrawPile().addFirst(troisiemeCarte);
+        Card carteChoisie1 = player.chooseCard("Quelle est la carte que vous ne voulez pas prendre ?",choiceCard1,true,true);
+        choiceCard1.remove(carteChoisie1);
+        player.getGame().getDrawPile().addFirst(carteChoisie1);
+
+        for (Card c : choiceCard1){
+            player.addToHand(c);
         }
     }
 }
