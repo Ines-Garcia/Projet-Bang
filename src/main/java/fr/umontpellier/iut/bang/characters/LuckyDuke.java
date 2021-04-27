@@ -6,4 +6,5 @@ public class LuckyDuke extends BangCharacter {
         super("Lucky Duke", 4);
     }
 
+    //test OK
 }

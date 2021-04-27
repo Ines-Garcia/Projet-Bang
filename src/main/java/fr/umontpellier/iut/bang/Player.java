@@ -391,43 +391,28 @@ public class Player {
      * @return la carte qui a été dégainée
      */
     public Card randomDraw() {
-        /*if (this.getBangCharacter().getName().equals("Lucky Duke")){ //V1 Lucky Duke
-           Card premiereCarte=this.getGame().getDrawPile().pollLast();
-           Card deuxiemeCarte=this.getGame().getDrawPile().pollLast();
+        if (this.getBangCharacter().getName().equals("Lucky Duke")){ //V1 Lucky Duke
+           Card premiereCarte=this.drawCard();
+           Card deuxiemeCarte=this.drawCard();
 
-           ArrayList<Card> choiceCard = new ArrayList<>();
-           choiceCard.add(premiereCarte);
-           choiceCard.add(deuxiemeCarte);
+           ArrayList<String> choiceCard = new ArrayList<>();
 
-            Card choisie = this.chooseCard("Séléctionnez la carte que vous préférez:",choiceCard,true,false);
+            choiceCard.add(premiereCarte.getPokerString());
 
+            choiceCard.add(deuxiemeCarte.getPokerString());
+
+            String choisie = this.choose("Entrez la valeur de la carte que vous voulez:",choiceCard,true,false);
 
             discard(premiereCarte);
             discard(deuxiemeCarte);
 
-            return choisie;
-
+            if (premiereCarte.getPokerString().equals(choisie)){
+                return premiereCarte;
+            }else {
+                return deuxiemeCarte;
+            }
         }
-        return bangCharacter.randomDraw(this); */
-
-        /*if (this.getBangCharacter().getName().equals("Lucky Duke")){ //V2 Lucky Duke (voir test)
-            ArrayList<Card> choiceCard = new ArrayList<>();
-            for (int i = 0 ; i < 2 ; i++){
-                choiceCard.add(this.drawCard());
-            }
-
-            Card choisie = this.chooseCard("Séléctionnez la carte que vous préférez:",choiceCard,true,false);
-
-
-            for (int i = 0 ; i < 2 ; i++){
-                discard(choiceCard.get(i));
-            }
-
-            return choisie;
-
-        }*/
         return bangCharacter.randomDraw(this);
-
     }
 
     /**

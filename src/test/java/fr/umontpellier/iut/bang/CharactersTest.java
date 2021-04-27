@@ -242,7 +242,7 @@ public class CharactersTest {
         assertEquals(beer, drawPile.peek());
     }
 
-    @Disabled
+
     @Test
     void testLuckyDuke() {
         makeGameWithCharacter(new LuckyDuke());
