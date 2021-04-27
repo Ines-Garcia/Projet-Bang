@@ -255,29 +255,32 @@ public class Player {
         if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;
         }
-        if (this.getHealthPoints()-n<=0){ //si mort apres degats //modif inferieur ou EGAL a 0
+        else if(this.getHealthPoints()-n<=0){ //si mort apres degats //modif inferieur ou EGAL a 0
+            this.healthPoints-=n;
+            while(this.getHand().contains(this.getCardInHand("Beer")) && this.healthPoints<1) {
+                incrementHealth(1);
+                discardFromHand(this.getCardInHand("Beer"));
+            }
             boolean mort = false;
-            while (this.getHealthPoints()-n<=0 && !mort){ //tant que le joueur est mort, rajouter une condition si bierre en main?
-                if (this.getHand().contains(this.getCardInHand("Beer"))){
-                    incrementHealth(1);
-                    discardFromHand(this.getCardInHand("Beer"));  //removeFromHand?
-                }else {
-                    healthPoints=0;
-                    game.getPlayers().remove(this);
-                    mort = true;
-                    if (game.vultureSamLaEtVivant()){ //si Vulture Sam est vivant et qu'il est dans la partie
-                        for (Card carte : this.getHand()){ //pour toute les cartes de la main du joueur mort
+            if(this.getHealthPoints()<=0){
+                mort = true;
+            }
+                if (mort) {
+                    healthPoints = 0;
+                    if (game.vultureSamLaEtVivant()) { //si Vulture Sam est vivant et qu'il est dans la partie
+                        for (Card carte : this.getHand()) { //pour toute les cartes de la main du joueur mort
                             this.getGame().getVultureSam().addToHand(carte); //je les ajoutes dans la main de Sam
                         }
-                        for (Card carte2 : this.getInPlay()){ //pour toute les cartes en jeu du joueur mort
+                        for (Card carte2 : this.getInPlay()) { //pour toute les cartes en jeu du joueur mort
                             this.getGame().getVultureSam().addToHand(carte2); //je les ajoutes dans la main de Sam
                         }
                     }
+                    game.getPlayers().remove(this);
                 }
             }
         }
 
-    }
+
 
     /**
      * @param player autre joueur
