@@ -265,11 +265,11 @@ public class Player {
                     healthPoints=0;
                     game.getPlayers().remove(this);
                     if (game.vultureSamLaEtVivant()){ //si Vulture Sam est vivant et qu'il est dans la partie
-                        for (Card carte : this.getHand()){
-                            this.getGame().getVultureSam().addToHand(carte);
+                        for (Card carte : this.getHand()){ //pour toute les cartes de la main du joueur mort
+                            this.getGame().getVultureSam().addToHand(carte); //je les ajoutes dans la main de Sam
                         }
-                        for (Card carte2 : this.getInPlay()){
-                            this.getGame().getVultureSam().addToHand(carte2);
+                        for (Card carte2 : this.getInPlay()){ //pour toute les cartes en jeu du joueur mort
+                            this.getGame().getVultureSam().addToHand(carte2); //je les ajoutes dans la main de Sam
                         }
                     }
                 }
