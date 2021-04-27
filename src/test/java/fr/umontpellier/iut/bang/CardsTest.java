@@ -315,7 +315,6 @@ public class CardsTest {
         assertTrue(p3.getHand().contains(saloon));
     }
 
-
     @Test
     void testJailSortAvecCoeur() {
         simpleGame.setInput("p3", "Saloon", "");
