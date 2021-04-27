@@ -28,6 +28,7 @@ public class PedroRamirez extends BangCharacter {
 
             if(choix==game.getTopOfDiscardPile()){
                 player.getHand().add(choix);
+                player.removeFromDiscard(choix);
             }
             else{
                 player.drawToHand();

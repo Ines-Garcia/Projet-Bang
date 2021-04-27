@@ -288,6 +288,7 @@ public class CharactersTest {
         drawPile.push(bang);
         drawPile.push(beer);
         p1.playTurn();
+        assertFalse(discardPile.contains(dynamite));
         assertEquals(2, p1.getHand().size());
         assertTrue(p1.getHand().contains(dynamite));
         assertTrue(p1.getHand().contains(beer));

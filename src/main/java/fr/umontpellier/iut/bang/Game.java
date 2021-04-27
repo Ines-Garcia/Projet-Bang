@@ -328,6 +328,8 @@ public class Game {
         discardPile.push(c);
     }
 
+    public void removeFromDiscrad(Card c){discardPile.remove(c);}
+
     /**
      * Retire un joueur du jeu. Si le joueur à retirer est le joueur courant, on passe au joueur suivant.
      * Après avoir retiré un joueur, on met à jour la partie (ce qui déterminera si elle est terminée ou pas).

@@ -352,6 +352,10 @@ public class Player {
         return false;
     }
 
+    public void removeFromDiscard(Card card){
+        game.removeFromDiscrad(card);
+    }
+
 
     /**
      * Défausse une carte de la main du joueur
