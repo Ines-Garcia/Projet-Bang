@@ -14,23 +14,32 @@ public class KitCarlson extends BangCharacter {
 
     @Override
     public void onStartTurn(Player player){
-        /*
-        ArrayList<Card> cartesPiochees = new ArrayList<>();
-        for (int i = 0 ; i < 3 ; i++){
-            cartesPiochees.add(player.drawCard());
+
+        Card premiereCarte=player.drawCard();
+        Card deuxiemeCarte=player.drawCard();
+        Card troisiemeCarte=player.drawCard();
+
+        ArrayList<Card> choiceCard1 = new ArrayList<>();
+        choiceCard1.add(premiereCarte);
+        choiceCard1.add(deuxiemeCarte);
+        choiceCard1.add(troisiemeCarte);
+
+        Card carteChoisie1 = player.chooseCard("Quelle est la première carte que vous voulez prendre ?",choiceCard1,true,true);
+        if (carteChoisie1!=null){ //si il choisis une carte
+            player.addToHand(carteChoisie1);
+            choiceCard1.remove(carteChoisie1);
+            Card carteChoisie2 = player.chooseCard("Quelle est la deuxieme carte que vous voulez prendre ?",choiceCard1,true,true);
+            if (carteChoisie2!=null){ //si il choisis une carte
+                player.addToHand(carteChoisie2);
+                choiceCard1.remove(carteChoisie2);
+            }else { //il ne choisis qu'une carte, il remet les deux autres dans la draw pile
+                player.getGame().getDrawPile().addFirst(deuxiemeCarte);
+                player.getGame().getDrawPile().addFirst(troisiemeCarte);
+            }
+        }else { //il ne choisis aucune carte, il remet tout dans la draw pile
+            player.getGame().getDrawPile().addFirst(premiereCarte);
+            player.getGame().getDrawPile().addFirst(deuxiemeCarte);
+            player.getGame().getDrawPile().addFirst(troisiemeCarte);
         }
-        Card carte1 = player.chooseCard("Quelle est la première carte que vous voulez prendre ?",cartesPiochees,true,true);
-        cartesPiochees.remove(carte1);
-        player.addToHand(carte1);
-
-        Card carte2 = player.chooseCard("Quelle est la deuxième carte que vous voulez prendre ?",cartesPiochees,true,true);
-        cartesPiochees.remove(carte2);
-        player.addToHand(carte2);
-
-        Card derniereCarte = cartesPiochees.get(0);
-
-        player.getGame().getDrawPile().addFirst(derniereCarte); // quel add choisir ?
-
-         */
     }
 }
