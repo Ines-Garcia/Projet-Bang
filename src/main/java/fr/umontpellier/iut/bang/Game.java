@@ -139,6 +139,30 @@ public class Game {
         return possibleCharacters;
     }
 
+    /**
+     * retourne le joueur qui joue Vulture Sam si il exsite, null sinon
+     */
+    public Player getVultureSam() {
+        for (Player p : players){
+            if (p.getBangCharacter().getName().equals("Vulture Sam")){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * retourne le joueur qui joue Suzy Lafayette si elle exsite, null sinon
+     */
+    public Player getSuzyLafayette() {
+        for (Player p : players){
+            if (p.getBangCharacter().getName().equals("Suzy Lafayette")){
+                return p;
+            }
+        }
+        return null;
+    }
+
     public List<Player> getPlayers() {
         return players;
     }
