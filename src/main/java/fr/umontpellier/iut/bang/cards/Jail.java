@@ -13,8 +13,9 @@ public class Jail extends BlueCard {
 
     public void playedBy(Player player) {
         super.playedBy(player);
-        player.removeFromInPlay(this);
-        List<Player> playerRestant = player.getOtherPlayers();
+        player.removeFromInPlay(this);   // pourquoi on enlève la Prison du InPlay de celui qui la joue ?
+        List<Player> playerRestant = new ArrayList<>();
+        playerRestant.addAll(player.getOtherPlayers());
 
         for (int i=0;i<playerRestant.size();i++){
             if (playerRestant.get(i).getRole()== Role.SHERIFF){
