@@ -15,6 +15,7 @@ public abstract class BlueCard extends Card {
 
     @Override
     public void playedBy(Player player) {
+        super.playedBy(player);
         player.addToInPlay(this);
     }
 }

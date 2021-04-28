@@ -14,6 +14,7 @@ public abstract class OrangeCard extends Card {
 
     @Override
     public void playedBy(Player player) {
+        super.playedBy(player);
         player.discard(this);
     }
 }

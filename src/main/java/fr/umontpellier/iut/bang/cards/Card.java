@@ -44,15 +44,15 @@ public abstract class Card {
      * Action à exécuter lorsque le joueur joue la carte depuis sa main
      * @param player le joueur qui joue la carte
      */
-    public abstract void playedBy(Player player);
+    //public abstract void playedBy(Player player);
 
-    /*public  void playedBy(Player player){ //V1 Susy
+    public  void playedBy(Player player){ //V1 Susy
         if (player.getGame().lafayetteSusyLaEtVivante()){ //si ya Susy dans la game et qu'elle est vivante
             if (player.getGame().getSuzyLafayette().getHand().isEmpty()){ //si elle a la main vide
                 player.getGame().getSuzyLafayette().drawToHand(); //elle pioche une carte
             }
         }
-    }*/
+    }
 
     /**
      * @return la représentation de la valeur de poker (2 à l'as) de la carte sous forme d'une chaîne de caractères
