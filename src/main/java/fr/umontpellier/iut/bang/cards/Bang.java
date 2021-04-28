@@ -60,7 +60,7 @@ public class Bang extends OrangeCard {
                                     playerCible.decrementHealth(1, player); //met a jours les pv
                                     missedNonUtilise=true;
                                 }
-                                //aplayerCible.discardFromHand(playerCible.getCardInHand("Barrel"));
+                                playerCible.discardFromHand(playerCible.getCardInHand("Barrel"));
                                 nbDeMissedUtilise++;
                             }
                         }
@@ -71,13 +71,24 @@ public class Bang extends OrangeCard {
                 }
 
             } else if (!player.getBangCharacter().getName().equals("Slab the Killer")) {
-                if (playerCible.getInPlay().contains(playerCible.getCardInPlay("Barrel"))) { //si la cible a un missed en main
+                if (playerCible.getInPlay().contains(playerCible.getCardInPlay("Barrel"))) { //si la cible a un barrel dans son InPlay
                     Card degainer = playerCible.randomDraw(); //dégaine une carte
                     if (degainer.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
-                        playerCible.decrementHealth(1, player); //met a jours les pv
+                        if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))) {
+                            List<String> choice = new ArrayList<>();
+                            choice.add("Missed!");
+                            choice.add("");
+                            if (playerCible.choose("Voulez vous jouer un Missed", choice, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
+                                playerCible.decrementHealth(1, player); // si il ne veut pas utiliser un missed
+                            } else { //si il utilise un missed
+                                playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
+                            }
+                        } else {
+                            playerCible.decrementHealth(1, player); // si il n'a pas de missed!
+                        }
                     }
-                    playerCible.removeFromInPlay(playerCible.getCardInPlay("Barrel"));
-                } else if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))) { //si la cible a un barrel sur le terrain
+                    //playerCible.removeFromInPlay(playerCible.getCardInPlay("Barrel"));
+                } else if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))) { //si la cible a un missed
                     List<String> choice = new ArrayList<>();
                     choice.add("Missed!");
                     choice.add("");
