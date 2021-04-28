@@ -363,10 +363,10 @@ public class Game {
             finished = true;
             winners.add(renegadePlayer);
 
-        } else if (players.size() != 1 && !players.contains(sheriffPlayer)) { // victoire des hors-la-loi
+        } else if (!players.contains(sheriffPlayer) && players.contains(outlawPlayers)) { // victoire des hors-la-loi
             finished = true;
             for (Player p : players) {
-                if (p.equals(outlawPlayers)) {
+                if (p.getRole()==OUTLAW) {
                     winners.add(p);
                 }
             }
