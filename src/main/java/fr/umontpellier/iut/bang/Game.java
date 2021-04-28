@@ -366,7 +366,7 @@ public class Game {
         } else if (players.size() != 1 && !players.contains(sheriffPlayer)) { // victoire des hors-la-loi
             finished = true;
             for (Player p : players) {
-                if (outlawPlayers.contains(p)) {
+                if (p.equals(outlawPlayers)) {
                     winners.add(p);
                 }
             }
