@@ -60,7 +60,7 @@ public class Bang extends OrangeCard {
                                     playerCible.decrementHealth(1, player); //met a jours les pv
                                     missedNonUtilise=true;
                                 }
-                                playerCible.discardFromHand(playerCible.getCardInHand("Barrel"));
+                                //aplayerCible.discardFromHand(playerCible.getCardInHand("Barrel"));
                                 nbDeMissedUtilise++;
                             }
                         }
