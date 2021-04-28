@@ -275,8 +275,8 @@ public class Player {
                         this.getGame().getVultureSam().addToHand(carte2); //je les ajoutes dans la main de Sam
                     }
                 }
+                game.removePlayer(this);
             }
-            game.removePlayer(this);
         }
     }
 
