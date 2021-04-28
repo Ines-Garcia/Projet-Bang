@@ -57,11 +57,19 @@ public class Bang extends OrangeCard {
                             if(choix.equals("Barrel")) {
                                 Card degainer = playerCible.randomDraw(); //dégaine une carte
                                 if (degainer.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
-                                    playerCible.decrementHealth(1, player); //met a jours les pv
-                                    missedNonUtilise=true;
+                                    if (playerCible.getHand().contains(playerCible.getCardInHand("Missed!"))) {
+                                        List<String> choices = new ArrayList<>();
+                                        choices.add("Missed!");
+                                        choices.add("");
+                                        if (playerCible.choose("Voulez vous jouer un Missed", choices, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
+                                            playerCible.decrementHealth(1, player); // si il ne veut pas utiliser un missed
+                                        } else { //si il utilise un missed
+                                            playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
+                                        }
+                                    } else {
+                                        playerCible.decrementHealth(1, player); // si il n'a pas de missed!
+                                    }
                                 }
-                                playerCible.discardFromHand(playerCible.getCardInHand("Barrel"));
-                                nbDeMissedUtilise++;
                             }
                         }
                     }
