@@ -222,6 +222,11 @@ public class Game {
             index %= players.size();
             currentPlayer = players.get(index); // passer au joueur suivant
         }
+
+        if (finished){
+            System.out.println("Victoire de :"+winners);
+        }
+
     }
 
     /**
