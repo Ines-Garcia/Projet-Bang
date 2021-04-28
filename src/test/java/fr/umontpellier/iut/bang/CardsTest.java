@@ -572,22 +572,4 @@ public class CardsTest {
 
         assertEquals(playerListExpected, PlayerInRange);
     }
-
-    @Disabled
-    @Test
-    void testChoose() {
-        simpleGame.setInput("Bang!", "p2");
-        List<String> choice = new ArrayList<>(); //choix de Bang! ou non
-        choice.add("Bang!");//
-        choice.add("");
-        Card bang = new Bang(1, CardSuit.SPADE);
-        p1.addToHand(bang);
-
-        p1.playTurn();
-        String choixBang = p1.choose("Voulez vous jouer un Bang", choice, true, true);//je demande si le joueur veux Bang ou passer son tour
-        Player choixPlayer = p1.choosePlayer("Quel joueur selectionnez vous", p1.getOtherPlayers(), true);
-
-        assertEquals("Bang!", choixBang);
-        assertEquals(p2, choixPlayer);
-    }
     }

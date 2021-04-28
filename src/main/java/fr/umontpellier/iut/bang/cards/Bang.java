@@ -62,14 +62,19 @@ public class Bang extends OrangeCard {
                                         choices.add("Missed!");
                                         choices.add("");
                                         if (playerCible.choose("Voulez vous jouer un Missed", choices, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
+                                            missedNonUtilise=true;
                                             playerCible.decrementHealth(1, player); // si il ne veut pas utiliser un missed
                                         } else { //si il utilise un missed
                                             playerCible.discardFromHand(playerCible.getCardInHand("Missed!"));
+                                            nbDeMissedUtilise++;
                                         }
                                     } else {
                                         playerCible.decrementHealth(1, player); // si il n'a pas de missed!
+                                        missedNonUtilise=true;
                                     }
                                 }
+                                nbDeMissedUtilise++;
+                                playerCible.discardFromHand(playerCible.getCardInHand("Barrel"));
                             }
                         }
                     }

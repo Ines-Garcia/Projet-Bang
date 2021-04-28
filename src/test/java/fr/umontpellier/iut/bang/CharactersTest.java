@@ -442,4 +442,10 @@ public class CharactersTest {
         assertTrue(discardPile.contains(bang2));
         assertTrue(discardPile.contains(bang3));
     }
+
+    @Test
+    void testplayerCibleGetName() {
+        makeGameWithCharacter(new WillyTheKid());
+        assertEquals("Willy the Kid", p1.getBangCharacter().getName());
+    }
 }
