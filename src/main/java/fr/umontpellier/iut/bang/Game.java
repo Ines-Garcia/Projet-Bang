@@ -3,6 +3,7 @@ package fr.umontpellier.iut.bang;
 import fr.umontpellier.iut.bang.cards.*;
 import fr.umontpellier.iut.bang.characters.*;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 import static fr.umontpellier.iut.bang.Role.*;
@@ -364,11 +365,12 @@ public class Game {
      * Teste si la partie est terminée et met à jour les attributs {@code finished} et {@code winners}.
      */
     private void updateGameFinished() {
+        /*
         if (players.size() == 1 && players.contains(renegadePlayer)) { // victoire du renégat
             finished = true;
             winners.add(renegadePlayer);
-
-        } else if (!players.contains(sheriffPlayer) && players.contains(outlawPlayers)) { // victoire des hors-la-loi
+        }
+        else if (!players.contains(sheriffPlayer) && players.contains(outlawPlayers)) { // victoire des hors-la-loi
             finished = true;
             for (Player p : players) {
                 if (p.getRole()==OUTLAW) {
@@ -382,7 +384,26 @@ public class Game {
 
         } else { // la partie n'est toujours pas terminée
             finished = false;
+        }*/
+
+
+        // V2
+
+        if (!players.contains(sheriffPlayer)) { //Si le shérif est mort
+            if (players.size()==1 && players.contains(renegadePlayer)) { // renegat
+                finished = true;
+                winners.add(renegadePlayer);
+            } else {   //hors-la-loi
+                finished = true;
+                winners.addAll(outlawPlayers);
+            }
         }
+        else if (!players.contains(renegadePlayer) && !players.containsAll(outlawPlayers)){  // victoire du Shérif et des adjoint
+            finished = true;
+            winners.addAll(players);
+        }
+
+
     }
 
     /**
