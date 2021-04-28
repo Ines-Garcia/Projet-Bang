@@ -381,8 +381,6 @@ public class CharactersTest {
         assertEquals(4, p2.getHealthPoints());
         assertTrue(discardPile.contains(bang));
         assertTrue(discardPile.contains(missed1));
-        assertTrue(discardPile.contains(barrel));
-        assertTrue(p2.getHand().isEmpty());
     }
 
 

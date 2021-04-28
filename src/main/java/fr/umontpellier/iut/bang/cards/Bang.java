@@ -74,7 +74,6 @@ public class Bang extends OrangeCard {
                                     }
                                 }
                                 nbDeMissedUtilise++;
-                                playerCible.discardFromHand(playerCible.getCardInHand("Barrel"));
                             }
                         }
                     }
