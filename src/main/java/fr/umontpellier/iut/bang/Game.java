@@ -175,6 +175,18 @@ public class Game {
         return null;
     }
 
+    /**
+     * retourne vrai si Suzy Lafayette est dans la partie et vivant
+     */
+    public boolean lafayetteSusyLaEtVivante() {
+        for (Player p : players){
+            if (p.getBangCharacter().getName().equals("Suzy Lafayette")){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Player> getPlayers() {
         return players;
     }
@@ -195,7 +207,7 @@ public class Game {
         }
 
         while (!finished) {
-            /** SUZY
+            /* SUZY
             for (Player player : players){
                 if (player.getBangCharacter().getName().equals("Suzy Lafayette")){
                     if (player.getHand().isEmpty()){
