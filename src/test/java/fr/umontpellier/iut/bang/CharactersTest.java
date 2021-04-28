@@ -385,7 +385,7 @@ public class CharactersTest {
         assertTrue(p2.getHand().isEmpty());
     }
 
-    @Disabled
+
     @Test
     void testSuzyLafayette() {
         makeGameWithCharacter(new SuzyLafayette());
