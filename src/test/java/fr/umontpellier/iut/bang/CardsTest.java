@@ -572,4 +572,17 @@ public class CardsTest {
 
         assertEquals(playerListExpected, PlayerInRange);
     }
+    @Disabled
+    @Test
+    void testGetOtherPlayers(){ //créé par ines
+        List<Player> playerListExpected = new ArrayList<>();
+        playerListExpected.add(p1);
+        playerListExpected.add(p2);
+        playerListExpected.add(p3);
+        playerListExpected.add(p4);
+        playerListExpected.add(p5);
+        System.out.println(playerListExpected);
+        assertEquals(playerListExpected,p1.getOtherPlayers());
+
+    }
     }
