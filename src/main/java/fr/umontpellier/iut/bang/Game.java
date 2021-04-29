@@ -225,7 +225,7 @@ public class Game {
         }
 
         if (finished){
-            System.out.println("Victoire de :"+winners);
+            System.out.println("Victoire de :"+ "\n" +winners);
         }
 
     }
@@ -365,29 +365,13 @@ public class Game {
      * Teste si la partie est terminée et met à jour les attributs {@code finished} et {@code winners}.
      */
     private void updateGameFinished() {
-        /*
-        if (players.size() == 1 && players.contains(renegadePlayer)) { // victoire du renégat
-            finished = true;
-            winners.add(renegadePlayer);
-        }
-        else if (!players.contains(sheriffPlayer) && players.contains(outlawPlayers)) { // victoire des hors-la-loi
-            finished = true;
-            for (Player p : players) {
-                if (p.getRole()==OUTLAW) {
-                    winners.add(p);
-                }
+        int nbhll=0;
+
+        for (Player p : players){
+            if (p.getRole()==OUTLAW){
+                nbhll++;
             }
-
-        } else if (players.contains(sheriffPlayer) && !players.containsAll(outlawPlayers) && !players.contains(renegadePlayer)) { // victoire du sheriff et des adjoints
-            finished = true;
-            winners.addAll(players);
-
-        } else { // la partie n'est toujours pas terminée
-            finished = false;
-        }*/
-
-
-        // V2
+        }
 
         if (!players.contains(sheriffPlayer)) { //Si le shérif est mort
             if (players.size()==1 && players.contains(renegadePlayer)) { // renegat
@@ -398,12 +382,10 @@ public class Game {
                 winners.addAll(outlawPlayers);
             }
         }
-        else if (!players.contains(renegadePlayer) && !players.containsAll(outlawPlayers)){  // victoire du Shérif et des adjoint
+        else if (!players.contains(renegadePlayer) && nbhll<1){  // victoire du Shérif et des adjoints
             finished = true;
             winners.addAll(players);
         }
-
-
     }
 
     /**
