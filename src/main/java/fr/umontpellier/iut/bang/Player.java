@@ -172,6 +172,7 @@ public class Player {
                      PlayersInRange.add(lesjoueurs.get(nb)); //le joueur est donc a porté je l'ajoute donc.
                  }
              }
+        PlayersInRange.remove(this);
         return PlayersInRange;
     }
 
