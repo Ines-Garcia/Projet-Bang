@@ -17,7 +17,7 @@ public class Bang extends OrangeCard {
         super.playedBy(player);
 
         List<Player> PlayerAPorte = player.getPlayersInRange(player.getWeaponRange()); //recup les joueurs a porte
-        PlayerAPorte.remove(player);
+        //PlayerAPorte.remove(player);
         Player playerCible = player.choosePlayer("Séléctionne ta cible", PlayerAPorte, false); //choisis la cible
         boolean esquiveJourdonnais = false; //initialisation du boolen d'esquive a false
 
@@ -120,7 +120,7 @@ public class Bang extends OrangeCard {
 
     public boolean canPlayFromHand(Player player) {
         List<Player> joueurs = player.getPlayersInRange(player.getWeaponRange());
-        joueurs.remove(player);
+        //joueurs.remove(player);
         if (!joueurs.isEmpty()) {
             if (player.getBangCharacter().getName().equals("Willy the Kid") || player.getWeaponName().equals("Volcanic")) { // si c'est willy the kid ou si il a une volcanic alors il peut jouer autant de bang qu'il veut
                 return true;

@@ -51,7 +51,6 @@ class GameTest {
     @Test
     void testgetOtherPlayer() {
         List<Player> listPlayerAttendu = new ArrayList<>();
-        listPlayerAttendu.add(p1);
         listPlayerAttendu.add(p2);
         listPlayerAttendu.add(p3);
         listPlayerAttendu.add(p4);
@@ -63,7 +62,6 @@ class GameTest {
     @Test
     void testgetOtherPlayerOrdredifférent(){
         List<Player> listPlayerAttendu = new ArrayList<>();
-        listPlayerAttendu.add(p3);
         listPlayerAttendu.add(p4);
         listPlayerAttendu.add(p5);
         listPlayerAttendu.add(p1);

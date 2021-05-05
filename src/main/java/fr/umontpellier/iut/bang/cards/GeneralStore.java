@@ -16,7 +16,7 @@ public class GeneralStore extends OrangeCard {
     public void playedBy(Player player) {
         super.playedBy(player);
         List<Player> allPlayers = player.getOtherPlayers();
-        //allPlayers.add(0, player);
+        allPlayers.add(0, player);
         List<Card> drawnCards = new ArrayList<>();
         for (int i = 0; i < allPlayers.size(); i++) {
             drawnCards.add(player.getGame().drawCard());
