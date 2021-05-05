@@ -15,7 +15,7 @@ public class Duel extends OrangeCard {
         super.playedBy(player);
         List<Player> joueurs = player.getOtherPlayers();
 
-        joueurs.remove(player);
+        //joueurs.remove(player);
 
         Player playerCible = player.choosePlayer("Séléctionne ta cible", joueurs, false); //choisis la cible
 

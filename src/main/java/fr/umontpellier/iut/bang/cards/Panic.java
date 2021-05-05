@@ -15,7 +15,7 @@ public class Panic extends OrangeCard {
         super.playedBy(player);
 
         List<Player> joueurs = player.getPlayersInRange(1);
-        joueurs.remove(player);
+        //joueurs.remove(player);
 
         Player playerCible = player.choosePlayer("Séléctionne ta cible", joueurs, false); //choisis la cible
         BlueCard chosie = player.chooseBlueCard("Séléctionnez une carte en jeu sinon appuyez sur entrer:",playerCible.getInPlay(),true,true);

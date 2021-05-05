@@ -165,10 +165,11 @@ public class Player {
      */
     public List<Player> getPlayersInRange(int range) {
         ArrayList<Player> PlayersInRange = new ArrayList<>(); //ArrayList de retour
-        PlayersInRange.add(0,this);
-             for (int nb = 0; nb < getOtherPlayers().size() ; nb++) { //Parcours de la list de joueurs
-                 if (range >= distanceTo(getOtherPlayers().get(nb))){ //si la range est >= à la distance entre le joueur courant et le joueur a l'indice nb.
-                     PlayersInRange.add(getOtherPlayers().get(nb)); //le joueur est donc a porté je l'ajoute donc.
+        List<Player> lesjoueurs = getOtherPlayers();
+        lesjoueurs.add(0,this);
+             for (int nb = 0; nb < lesjoueurs.size() ; nb++) { //Parcours de la list de joueurs
+                 if (range >= distanceTo(lesjoueurs.get(nb))){ //si la range est >= à la distance entre le joueur courant et le joueur a l'indice nb.
+                     PlayersInRange.add(lesjoueurs.get(nb)); //le joueur est donc a porté je l'ajoute donc.
                  }
              }
         return PlayersInRange;
