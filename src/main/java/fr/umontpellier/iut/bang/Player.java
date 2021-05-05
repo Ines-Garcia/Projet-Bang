@@ -675,13 +675,13 @@ public class Player {
 
                     this.removeFromInPlay(this.getCardInPlay("Dynamite"));
                 } else {
-                    getOtherPlayers().get(1).addToInPlay(this.getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
+                    getOtherPlayers().get(0).addToInPlay(this.getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
 
                     this.removeFromInPlay(this.getCardInPlay("Dynamite"));
 
                 }
             } else {
-                this.getOtherPlayers().get(1).addToInPlay(getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
+                this.getOtherPlayers().get(0).addToInPlay(getCardInPlay("Dynamite")); //la dynamite passe au joueur d'apres
                 this.removeFromInPlay(this.getCardInPlay("Dynamite"));
             }
         }
