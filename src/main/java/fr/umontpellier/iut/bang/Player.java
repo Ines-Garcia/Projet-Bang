@@ -140,21 +140,25 @@ public class Player {
      * immédiatement après le joueur courant)
      */
     public List<Player> getOtherPlayers() {
-        List<Player> player = game.getPlayers();
+        List<Player> listeplayer = new ArrayList<>();
         List<Player> playerordre = new ArrayList<>();
-        if(player.indexOf(this)==0) {
-            playerordre=player;
+        listeplayer.addAll(game.getPlayers());
+        /*for (Player p : game.getPlayers()){
+            listeplayer.add(p);
+        }*/
+        if(listeplayer.indexOf(this)==0) {
+            listeplayer.remove(this);
+            return listeplayer;
         }
         else {
-            for (int i=player.indexOf(this);i< player.size();i++){
-                playerordre.add(player.get(i));
+            for (int i=listeplayer.indexOf(this);i< listeplayer.size();i++){
+                playerordre.add(listeplayer.get(i));
             }
-            for (int j=0;j<player.indexOf(this);j++){
-                playerordre.add(player.get(j));
+            for (int j=0;j<listeplayer.indexOf(this);j++){
+                playerordre.add(listeplayer.get(j));
             }
-
+            playerordre.remove(this);
         }
-        playerordre.remove(this);
         return playerordre;
     }
 
@@ -164,16 +168,23 @@ public class Player {
      * à {@code range}.
      */
     public List<Player> getPlayersInRange(int range) {
-        ArrayList<Player> PlayersInRange = new ArrayList<>(); //ArrayList de retour
+        ArrayList<Player> playersInRange = new ArrayList<>(); //ArrayList de retour
         List<Player> lesjoueurs = getOtherPlayers();
-        lesjoueurs.add(0,this);
-             for (int nb = 0; nb < lesjoueurs.size() ; nb++) { //Parcours de la list de joueurs
-                 if (range >= distanceTo(lesjoueurs.get(nb))){ //si la range est >= à la distance entre le joueur courant et le joueur a l'indice nb.
-                     PlayersInRange.add(lesjoueurs.get(nb)); //le joueur est donc a porté je l'ajoute donc.
-                 }
-             }
-        PlayersInRange.remove(this);
-        return PlayersInRange;
+        /*lesjoueurs.add(0,this);
+        for (Player lesjoueur : lesjoueurs) { //Parcours de la list de joueurs
+            if (range >= distanceTo(lesjoueur)) { //si la range est >= à la distance entre le joueur courant et le joueur a l'indice nb.
+                playersInRange.add(lesjoueur); //le joueur est donc a porté je l'ajoute donc.
+            }
+        }
+        playersInRange.remove(this);*/
+
+        for (Player p : lesjoueurs){
+            if (distanceTo(p)<=range){
+                playersInRange.add(p);
+            }
+        }
+
+        return playersInRange;
     }
 
     /**
