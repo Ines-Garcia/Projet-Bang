@@ -165,9 +165,9 @@ public class Player {
     public List<Player> getOtherPlayerQuiOntDesCarte(){
         List<Player> joueurs = new ArrayList<>();
         joueurs.addAll(getOtherPlayers());
-        for (Player p : joueurs){
-            if (p.getHand().isEmpty() && p.getInPlay().isEmpty()){
-                joueurs.remove(p);
+        for (int i=0;i< joueurs.size();i++){
+            if (joueurs.get(i).getHand().isEmpty() && joueurs.get(i).getInPlay().isEmpty()){
+                joueurs.remove(joueurs.get(i));
             }
         }
         return joueurs;
