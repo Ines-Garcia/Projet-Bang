@@ -14,6 +14,7 @@ public class Saloon extends OrangeCard {
     public void playedBy(Player player) {
         super.playedBy(player);
         List<Player> joueurs = player.getOtherPlayers();
+        joueurs.add(player);
         for (Player i : joueurs){
             i.incrementHealth(1);
         }
