@@ -47,7 +47,7 @@ public class CatBalou extends OrangeCard {
     }
 
     public boolean canPlayFromHand(Player player) {
-        List<Player> playerRestant = player.getOtherPlayerQuiOntDesCarte();
+        List<Player> playerRestant = player.getOtherPlayerQuiOntDesCarte();  // tout les joueurs qui on des cartes
         if(playerRestant.isEmpty()){
             return false;
         }

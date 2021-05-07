@@ -17,6 +17,12 @@ public class Panic extends OrangeCard {
         List<Player> joueurs = player.getPlayersInRange(1);
         //joueurs.remove(player);
 
+        for (int i=0; i< joueurs.size();i++){
+            if (joueurs.get(i).getHand().isEmpty() && joueurs.get(i).getInPlay().isEmpty()) {
+                joueurs.remove(joueurs.get(i));
+            }
+        }
+
         Player playerCible = player.choosePlayer("Séléctionne ta cible", joueurs, false); //choisis la cible
         BlueCard chosie = player.chooseBlueCard("Séléctionnez une carte en jeu sinon appuyez sur entrer:",playerCible.getInPlay(),true,true);
 
@@ -33,10 +39,17 @@ public class Panic extends OrangeCard {
     public boolean canPlayFromHand(Player player) {
         List<Player> joueurs = player.getPlayersInRange(1);
         joueurs.remove(player);
-        if (joueurs.isEmpty()){
+        if (joueurs.isEmpty()){ //si pas de joueur en range
             return false;
         }
-        return true;
+        boolean joueurDispo = false;
+        for (Player p :joueurs){ //pour tt les joueurs a range
+            if (!p.getHand().isEmpty() || !p.getInPlay().isEmpty()) { //si au moins 1 joueur a au moins une carte
+                joueurDispo = true;
+                break;
+            }
+        }
+        return joueurDispo;
     }
 
 }

@@ -382,9 +382,11 @@ public class Player {
         }
         else if(this.getHealthPoints()-n<=0){ //si mort apres degats //modif inferieur ou EGAL a 0
             this.healthPoints-=n;
-            while(this.getHand().contains(this.getCardInHand("Beer")) && isDead()) {
-                incrementHealth(1);
-                discardFromHand(this.getCardInHand("Beer"));
+            if (this.getOtherPlayers().size()>1) {
+                while (this.getHand().contains(this.getCardInHand("Beer")) && isDead()) {
+                    incrementHealth(1);
+                    discardFromHand(this.getCardInHand("Beer"));
+                }
             }
             boolean mort = false;
             if(isDead()){
