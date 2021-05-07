@@ -162,6 +162,17 @@ public class Player {
         return playerordre;
     }
 
+    public List<Player> getOtherPlayerQuiOntDesCarte(){
+        List<Player> joueurs = new ArrayList<>();
+        joueurs.addAll(getOtherPlayers());
+        for (Player p : joueurs){
+            if (p.getHand().isEmpty() && p.getInPlay().isEmpty()){
+                joueurs.remove(p);
+            }
+        }
+        return joueurs;
+    }
+
     /**
      * @param range portée considérée
      * @return la liste des autres joueurs encore en jeu que le joueur courant voit à une distance inférieure ou égale

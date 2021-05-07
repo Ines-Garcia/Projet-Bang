@@ -33,7 +33,7 @@ public class CatBalou extends OrangeCard {
             playerCible.discard(carteAenlever);
         }*/
 
-        List<Player> playerRestant = player.getOtherPlayers(); //V2
+        List<Player> playerRestant = player.getOtherPlayerQuiOntDesCarte(); //V2
 
         Player playerCible = player.choosePlayer("Sélectionne ta cible", playerRestant, false); //choisis la cible
         BlueCard chosie = player.chooseBlueCard("Séléctionnez une carte en jeu sinon appuyez sur entrer:",playerCible.getInPlay(),true,true);
@@ -44,6 +44,13 @@ public class CatBalou extends OrangeCard {
             playerCible.removeFromInPlay(playerCible.getCardInPlay(chosie.getName()));
             playerCible.discard(chosie);
         }
+    }
 
+    public boolean canPlayFromHand(Player player) {
+        List<Player> playerRestant = player.getOtherPlayerQuiOntDesCarte();
+        if(playerRestant.isEmpty()){
+            return false;
+        }
+        return true;
     }
 }
