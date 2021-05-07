@@ -187,6 +187,103 @@ public class Player {
         return playersInRange;
     }
 
+    public void reactToBang(Player attacker) {
+        boolean esquiveJourdonnais = false; //initialisation du boolen d'esquive a false
+
+        if (this.getBangCharacter().getName().equals("Jourdonnais")) { //si la cible est "Jourdonnais"
+            Card degainerJourdonnais = this.randomDraw(); //dégaine une carte
+            if (degainerJourdonnais.getSuit() == CardSuit.HEART) { //si la carte degaine est un coeur
+                esquiveJourdonnais = true; //il esquive
+            }
+        }
+        if (!esquiveJourdonnais) { //si il n'esquive pas
+            if (attacker.getBangCharacter().getName().equals("Slab the Killer")) {
+                int compteurDeMissed = 0;
+                for (Card c : this.getHand()) {
+                    if (c.getName().equals("Missed!") || c.getName().equals("Barrel")) {
+                        compteurDeMissed++;
+                    }
+                }
+                if (compteurDeMissed >= 2) { //si la cible a 2 missed en main ou plus
+                    int nbDeMissedUtilise = 0;
+                    boolean missedNonUtilise = false;
+
+                    List<String> choice = new ArrayList<>();
+                    choice.add("Missed!");
+                    choice.add("Barrel");
+                    choice.add("");
+
+                    while (nbDeMissedUtilise != 2 && !missedNonUtilise) {
+                        String choix = this.choose("Voulez vous jouer un Missed", choice, true, true);
+                        if (choix.equals("")) { //si il veux rien utilisé
+                            this.decrementHealth(1, attacker);
+                            missedNonUtilise = true;
+                        } else { //si il utilise un missed OU un Barrel
+                            if (choix.equals("Missed!")) {
+                                this.discardFromHand(this.getCardInHand("Missed!"));
+                                nbDeMissedUtilise++;
+                            }
+                            if (choix.equals("Barrel")) {
+                                Card degainer = this.randomDraw(); //dégaine une carte
+                                if (degainer.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
+                                    if (this.getHand().contains(this.getCardInHand("Missed!"))) {
+                                        List<String> choices = new ArrayList<>();
+                                        choices.add("Missed!");
+                                        choices.add("");
+                                        if (this.choose("Voulez vous jouer un Missed", choices, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
+                                            missedNonUtilise = true;
+                                            this.decrementHealth(1, attacker); // si il ne veut pas utiliser un missed
+                                        } else { //si il utilise un missed
+                                            this.discardFromHand(this.getCardInHand("Missed!"));
+                                            nbDeMissedUtilise++;
+                                        }
+                                    } else {
+                                        this.decrementHealth(1, attacker); // si il n'a pas de missed!
+                                        missedNonUtilise = true;
+                                    }
+                                }
+                                nbDeMissedUtilise++;
+                            }
+                        }
+                    }
+                } else {
+                    this.decrementHealth(1, attacker); //met a jours les pv
+                }
+
+            } else if (!attacker.getBangCharacter().getName().equals("Slab the Killer")) {
+                if (this.getInPlay().contains(this.getCardInPlay("Barrel"))) { //si la cible a un barrel dans son InPlay
+                    Card degainer = this.randomDraw(); //dégaine une carte
+                    if (degainer.getSuit() != CardSuit.HEART) { //si la carte degainer n'est pas un coeur
+                        if (this.getHand().contains(this.getCardInHand("Missed!"))) {
+                            List<String> choice = new ArrayList<>();
+                            choice.add("Missed!");
+                            choice.add("");
+                            if (this.choose("Voulez vous jouer un Missed", choice, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
+                                this.decrementHealth(1, attacker); // si il ne veut pas utiliser un missed
+                            } else { //si il utilise un missed
+                                this.discardFromHand(this.getCardInHand("Missed!"));
+                            }
+                        } else {
+                            this.decrementHealth(1, attacker); // si il n'a pas de missed!
+                        }
+                    }
+                    //playerCible.removeFromInPlay(playerCible.getCardInPlay("Barrel"));
+                } else if (this.getHand().contains(this.getCardInHand("Missed!"))) { //si la cible a un missed
+                    List<String> choice = new ArrayList<>();
+                    choice.add("Missed!");
+                    choice.add("");
+                    if (this.choose("Voulez vous jouer un Missed", choice, true, true).equals("")) { //demande au joueur cible si il veut jouer sa carte miss
+                        this.decrementHealth(1, attacker); // si il ne veut pas utiliser un missed
+                    } else { //si il utilise un missed
+                        this.discardFromHand(this.getCardInHand("Missed!"));
+                    }
+                } else { //si la cible n'as ni de barrel ni de missed
+                    this.decrementHealth(1, attacker); //met a jours les pv
+                }
+            }
+        }
+    }
+
     /**
      * @return true si le joueur est mort
      */
@@ -265,7 +362,9 @@ public class Player {
             this.drawToHand();
         }
         if (this.getBangCharacter().getName().equals("El Gringo")){
-            this.addToHand(attacker.removeRandomCardFromHand());
+            if (attacker!=null) {   // si il n'est pas attaquer par la dynamite
+                this.addToHand(attacker.removeRandomCardFromHand());
+            }
         }
         if(this.getHealthPoints()-n>0){ //si vivant apres degats
             this.healthPoints-=n;

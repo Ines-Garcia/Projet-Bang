@@ -15,21 +15,9 @@ public class Gatling extends OrangeCard {
     public void playedBy(Player player) {
         super.playedBy(player);
         List<Player> joueurs = player.getOtherPlayers();
-        List<String> choice = new ArrayList<>();
-        choice.add("Missed!");
-        choice.add("");
 
         for (Player p : joueurs){
-            if (p.getHand().contains(p.getCardInHand("Missed!"))) {
-                if (p.choose("Voulez vous utiliser un Missed! ? ", choice, false, true).equals("")) { //demande si le joueur veux perdre un point de vie
-                    p.decrementHealth(1, player);
-                } else {
-                    p.discardFromHand(p.getCardInHand("Missed!")); //enleve le bang de la main du joueur
-                }
-            }else {
-                p.decrementHealth(1, player);
-            }
-
+            p.reactToBang(player);
         }
     }
 

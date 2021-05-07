@@ -26,4 +26,11 @@ public class Jail extends BlueCard {
         Player playerCible = player.choosePlayer("Séléctionne ta cible", playerRestant, false); //choisis la cible
         playerCible.addToInPlay(this);
     }
+
+    public boolean canPlayFromHand(Player player) {
+        if (player.getOtherPlayers().size()==1 && player.getOtherPlayers().get(0).getRole() == Role.SHERIFF){
+            return false;
+        }
+        return true;
+    }
 }
