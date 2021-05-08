@@ -19,4 +19,9 @@ public class Saloon extends OrangeCard {
             i.incrementHealth(1);
         }
     }
+
+    public boolean canPlayFromHand(Player player) {
+        return super.canPlayFromHand(player);
+    }
+
 }

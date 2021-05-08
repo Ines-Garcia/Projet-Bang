@@ -28,10 +28,13 @@ public class Jail extends BlueCard {
     }
 
     public boolean canPlayFromHand(Player player) {
-        super.canPlayFromHand(player);
-        if (player.getOtherPlayers().size()==1 && player.getOtherPlayers().get(0).getRole() == Role.SHERIFF){
-            return false;
+        if (super.canPlayFromHand(player)){
+            if (player.getOtherPlayers().size()==1 && player.getOtherPlayers().get(0).getRole() == Role.SHERIFF){
+                return false;
+            }
+            return true;
         }
-        return true;
+        return false;
     }
+
 }

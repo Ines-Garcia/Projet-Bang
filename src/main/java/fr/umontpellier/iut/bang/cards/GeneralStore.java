@@ -33,4 +33,9 @@ public class GeneralStore extends OrangeCard {
             choosingPlayer.addToHand(card);
         }
     }
+
+    public boolean canPlayFromHand(Player player) {
+        return super.canPlayFromHand(player);
+    }
+
 }

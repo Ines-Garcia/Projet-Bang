@@ -54,4 +54,8 @@ public class Duel extends OrangeCard {
 
     }
 
+    public boolean canPlayFromHand(Player player) {
+        return super.canPlayFromHand(player);
+    }
+
 }

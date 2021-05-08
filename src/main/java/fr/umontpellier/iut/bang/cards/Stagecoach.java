@@ -14,4 +14,9 @@ public class Stagecoach extends OrangeCard {
         player.drawToHand();
         player.drawToHand();
     }
+
+    public boolean canPlayFromHand(Player player) {
+        return super.canPlayFromHand(player);
+    }
+
 }

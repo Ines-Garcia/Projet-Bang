@@ -24,12 +24,7 @@ public class Gatling extends OrangeCard {
     // Si les autre joueur ont un rater ils ne perde pas de point de vie
 
     public boolean canPlayFromHand(Player player) {
-        if (player.getGame().getCurrentPlayer()==player){ //si c'est le tour du joueur passé en parametre
-            if (player.getHand().contains(this)){ //si le joueur en parametre a la carte en main //pas besoin car playFromHand test deja si carte presente dans la main
-                return true;
-            }
-            return false;
-        }
-        return false;
+        return super.canPlayFromHand(player);
     }
+
 }

@@ -12,4 +12,9 @@ public class Dynamite extends BlueCard {
     public void playedBy(Player player) {
         super.playedBy(player);
     }
+
+    public boolean canPlayFromHand(Player player) {
+        return super.canPlayFromHand(player);
+    }
+
 }

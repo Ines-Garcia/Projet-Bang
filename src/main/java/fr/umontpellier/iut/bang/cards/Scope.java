@@ -12,4 +12,8 @@ public class Scope extends BlueCard {
         super.playedBy(player);
     }
 
+    public boolean canPlayFromHand(Player player) {
+        return super.canPlayFromHand(player);
+    }
+
 }
