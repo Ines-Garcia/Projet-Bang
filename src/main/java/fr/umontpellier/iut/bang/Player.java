@@ -372,7 +372,7 @@ public class Player {
         if (this.getBangCharacter().getName().equals("Bart Cassidy")){
             this.drawToHand();
         }
-        if (this.getBangCharacter().getName().equals("El Gringo")){
+        if (attacker!=null && attacker.getHand().size()<0) {
             if (attacker!=null) {   // si il n'est pas attaquer par la dynamite
                 this.addToHand(attacker.removeRandomCardFromHand());
             }
