@@ -166,3 +166,4 @@ Un premier jeu de tests vous est fourni (comme d'habitude dans le répertoire `s
 Il est donc attendu que les projets rendus passent le premier jeu de tests sans erreurs (afin d'avoir une moyenne de 8/20). Naturellement, vous devez également vérifier par vous-mêmes (en écrivant d'autres tests unitaires) que le projet se comporte correctement dans les différents cas particuliers qui peuvent se produire et qui ne sont pas nécessairement couverts par les tests qui vous ont été fournis.
 
 **Remarque importante** : puisque l'évaluation des rendus se fait par des tests automatisés, **les projets qui ne compilent pas seront automatiquement rejetés** et la note sera 0.
+# Projet-Bang
